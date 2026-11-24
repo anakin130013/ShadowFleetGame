@@ -6,7 +6,7 @@
 // exact string against Serial output on boot, the AMOLED home screen, and the
 // phone page footer to confirm all three actually agree on what's running.
 // ---------------------------------------------------------------------------
-#define FIRMWARE_VERSION "v1.0.1"
+#define FIRMWARE_VERSION "v1.0.2"
 #define FIRMWARE_DATE "2026-11-23"
 // v0.1.0 - Original single-player Shadow Fleet UI (star field, static screens)
 // v0.2.0 - Corrected BSP (pins/reset/enable/touch protocol) for 1.43 (non-C) board
@@ -3575,4 +3575,7 @@
 //   talks, news, the forecast) and /state "home" sends it, so the phone shows such a world like any other. A home world nobody
 //   plays: the Outer Rim guard, 2 VP, talks and bribes allowed; its Sympathy stays its own faction. HOME_GUARD_NEUTRAL unused.
 //   Docs: the quick start + rulebook say to put a claim token AND fleet marker 1 on your home world.
+// v1.0.2 (2026-11-23) -- THE EMPTY RIVET BOX (user screenshot, THE GAMBITS ARE DEALT): a Galaxy News item with no facts (no world,
+//   no faction) drew an empty readout box holding only Rivet's button, its "for you" line hidden behind him. newsReadout now
+//   shows that line as a FOR YOU row instead. The gambit line no longer names the old Galaxy and You screen. Harness: newsgambit.
 

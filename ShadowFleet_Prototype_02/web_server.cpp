@@ -1515,7 +1515,7 @@ static const char PAGE_HTML[] PROGMEM = R"HTML(
 </div>
 
 <script>
-const PAGE_FW = 'v1.0.1';  // 3.1-dev.44: written by tools/page/make_page_gz.py from version.h -- the phone reloads when the table runs something else
+const PAGE_FW = 'v1.0.2';  // 3.1-dev.44: written by tools/page/make_page_gz.py from version.h -- the phone reloads when the table runs something else
 let myId = localStorage.getItem('sf_id');
 if (!myId) { myId = 'p' + Math.floor(Math.random()*1e9); localStorage.setItem('sf_id', myId); }
 let mySlot = -1;
@@ -4437,7 +4437,7 @@ function newsReadout(s, e, t, key) {
   const rows = [];
   if (e.planet >= 0 && s.planets[e.planet]) rows.push(['WORLD', worldLine(s, e.planet)]);
   if (e.who >= 0 && e.who < 4) rows.push(['STANDING', standingHtml(e.who, tierIdx(s, e.who), 0)]);
-  if (!rows.length && !t.you) return '';
+  if (!rows.length) return t.you ? readoutHtml([['FOR YOU', t.you]], '') : '';  // v1.0.2: no facts = say it, don't hide it behind an empty box
   return readoutHtml(rows, t.you ? key : '') + (t.you ? rivetSay(key, t.you, e.planet >= 0 ? ['SHOW ME ON THE MAP', 'beatMap(' + e.planet + ')'] : null) : '');
 }
 // ---- 3.1-dev.48 SELL IT TWICE (Scoundrels; user: "the feeling of Han in the freighter ... you've abused the system so much you get in trouble") ----
@@ -4719,7 +4719,7 @@ function newsText(s, e, mine) {
     case 20: return { head: 'THE SUMMIT HELD', line: 'Two quiet rounds. ' + feedWho(s, e.other) + '\u2019s peace held.', you: '', col: '#8CE7A0', f: f };
     case 21: return { head: 'COVER BLOWN', line: feedWho(s, e.other) + ' was living among the ' + FN + ' as one of their own.', you: e.other === mySlot ? 'A tier down with them.' : 'Now you know.', col: '#FF6B5A', f: f };
     case 23: return { head: 'WHISPERS FROM A SAFEHOUSE', line: 'Dawn agents are talking: ' + W + ' holds ' + e.other + ' ship' + (e.other === 1 ? '' : 's') + '.', you: (s.planets[e.planet] || {}).owner === mySlot ? 'That\u2019s your world. Everyone heard.' : 'The whole table heard it.', col: '#C8364A', f: f };
-    case 24: return { kick: 'THE FINAL HOUR NEARS', head: 'THE GAMBITS ARE DEALT', line: 'One round after this one. Everyone at the table is now holding something.', you: 'Draw yours, and check the black market: COMMS: THE GALAXY AND YOU.', col: '#FFD166' };
+    case 24: return { kick: 'THE FINAL HOUR NEARS', head: 'THE GAMBITS ARE DEALT', line: 'One round after this one. Everyone at the table is now holding something.', you: 'Draw your gambit, then visit the black market in DOCKS.', col: '#FFD166' };
     case 25: case 26: case 27: case 28: return null;  // the finale plays these itself
     case 34: { const by = Math.floor(e.other / 8), item = e.other % 8, B = BIG[item] || ['SOMETHING BIG'];
                return { kick: 'THE BLACK MARKET', head: B[0] + ' SOLD', line: pTag(s, by) + ' bought a ' + B[0].toLowerCase() + (item === 1 && e.planet >= 0 ? ' for ' + W : '') + '.', you: by === mySlot ? 'Everyone knows. Make it count in the Final Hour.' : ['Their biggest strike just got 4 ships bigger.', W + ' will shrug off the first 3 hits in the finale.', 'They have an extra strike coming.', 'They can strike anywhere for free.', 'They\u2019ll see every hidden gambit and strike at the reveal.'][item] || '', col: '#C9A227' }; }

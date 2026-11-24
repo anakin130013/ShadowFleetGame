@@ -544,6 +544,8 @@ const HARNESS_MODES = {
   // 3.1-dev.10 GALAXY NEWS: full-screen cards, the job offer, Home rows
   newsrace: { state: () => fakeState({battleActive:false, battleKind:0, phase:0, phaseName:'PREPARE'}),
               action: () => setTimeout(() => annOpen(lastS, {kind:11, num:2, who:1, planet:4, other:-1, round:3}, false), 300) },
+  newsgambit: { state: () => fakeState({battleActive:false, battleKind:0, phase:0, phaseName:'PREPARE'}),  // v1.0.2: no facts -> FOR YOU row, no empty box
+              action: () => setTimeout(() => annOpen(lastS, {kind:11, num:24, who:-1, planet:-1, other:-1, round:5}, false), 300) },
   newswarn: { state: () => fakeState({battleActive:false, battleKind:0, phase:0, phaseName:'PREPARE'}),
               action: () => setTimeout(() => annOpen(lastS, {kind:12, num:0, who:2, planet:-1, other:0, round:3}, true), 300) },
   newsstrike: { state: () => fakeState({battleActive:false, battleKind:0, phase:0, phaseName:'PREPARE'}),
