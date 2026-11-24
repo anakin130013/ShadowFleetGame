@@ -1,0 +1,123 @@
+# PYKE SYNDICATE -- crime lords who are everywhere. A mix of quiet ruin (they
+# take your suppliers, buy your debts, raise your prices, and wait) and "we
+# were watching". Spice when it fits. Never physically violent, never vague.
+# Spoken by whichever Pyke commander isn't yours (Vosk / Oxa Tull / Rhel).
+
+took: We watched you take {planet}. We watch everything.
+took: {planet}. Bold. We know which hangar your fleet sleeps in.
+took: {planet}'s spice was spoken for. Now so are you.
+took: Someone has to pay for what was lost on {planet}. We've decided it's you.
+took: You took {planet} at dawn. Your quartermaster sold us the timetable at midnight.
+took: Every crate that doesn't leave {planet} goes on your tab. The tab has no limit.
+took: {planet} was a quiet, profitable world. You've made it loud. We'll make it quiet again.
+took: We don't fight over {planet}. We just make sure nothing you buy ever arrives on time again.
+took: Enjoy {planet}. Ask your fuel suppliers how long they plan to keep selling to you.
+took: The people of {planet} owe us money. Now so does whoever rules them.
+took: You didn't take {planet} from us. You borrowed it. We charge interest on loans.
+took: Your pilots refuelled twice on the way to {planet}. Both stations were ours.
+
+betray: We gave you our routes. You used them to reach {planet}. That was very expensive of you.
+betray: Partners don't take {planet}. Debtors do. Welcome to the ledger.
+betray: Every favor we ever did you has a price. As of today, all of them are due.
+betray: We knew you'd turn on us. We just wanted to see which world you'd pick. {planet}. Interesting.
+betray: Your friends will start returning your calls more slowly. Then not at all. That's us.
+betray: You were the safest name in our book. We're moving it to the other book.
+betray: Betrayal on {planet}. We don't get angry, Commander. We get organized.
+betray: Your suppliers have been informed you are no longer good for business.
+betray: We'll let you keep {planet}. We'll take everything around it.
+betray: Your crews still think they work for you. Give it a few rounds.
+betray: The spice you were promised has been rerouted. So has the fuel. So has the food.
+betray: We were patient with you. Now we are only patient.
+
+rival: You broke Crimson Dawn's grip on {planet}. The Syndicate will see your fuel tanks never run dry.
+rival: Crimson Dawn is gone from {planet}. We noticed. We notice everything.
+rival: Crimson Dawn lost {planet} to you. Some debts we're happy to forgive.
+rival: The Dawn's accounts on {planet} are closed. Ours are open to you.
+rival: We saw what you did to Crimson Dawn on {planet}. We were already toasting before you landed.
+rival: {planet} no longer pays Crimson Dawn. It pays you. And you, it seems, pay attention.
+rival: Your next three spice shipments are on the house. Don't ask the house who used to own them.
+rival: The Dawn will want {planet} back. Our people will make sure their ships keep breaking down.
+rival: You've done the Syndicate a service on {planet}. We remember services longer than insults.
+rival: Every smuggler on {planet} just switched sides. Ours, and therefore yours.
+rival: Crimson Dawn's lieutenant on {planet} is looking for work. We'd advise against hiring him.
+rival: A friend who hurts our rivals is a friend we feed. Your docks will be full.
+
+paid: Paid in full for {planet}. The Syndicate never forgets a clean payment. Or a late one.
+paid: Paid in full for {planet}. We knew you would.
+paid: Your credits for {planet} cleared before you sent them. We see transfers early.
+paid: {planet} is yours. The paperwork is clean. The Syndicate is very good at clean paperwork.
+paid: You paid without haggling. Everyone haggles. We'll be wondering why you didn't.
+paid: A fair price for {planet}. Fair keeps you on the right side of the ledger.
+paid: Credits received. Your name stays off the list we hope you never see.
+paid: You bought {planet} from the Syndicate. Nobody ever buys only once.
+paid: Payment accepted. The spice on {planet} is yours. The routes out of it are still ours.
+paid: Transaction complete. Our people on {planet} will make sure your stay is comfortable.
+paid: {planet}'s accounts now carry your name. We keep a copy. We keep copies of everything.
+paid: Good business is quiet business. Thank you for being quiet.
+
+deal: We have a deal on {planet}. Our deals outlive the people who make them.
+deal: A deal on {planet}. We'll be watching you keep it.
+deal: Terms agreed on {planet}. Your copy is on your ship. You didn't put it there. We did.
+deal: A cut of {planet}'s spice, every round, on time. We already know which ships will carry it.
+deal: The Syndicate keeps its word. It also keeps track of yours.
+deal: We like this arrangement. Make sure we keep liking it.
+deal: Our accountants are pleased with {planet}. Pleased accountants are rare. Treasure them.
+deal: The deal on {planet} is done. Our people will be at every dock to see it honored.
+deal: You negotiate like someone who owes money. We like that in a partner.
+deal: {planet} stays profitable, you stay comfortable. Simple.
+deal: A handshake on {planet}. Firm. Honest. We'll remember both.
+deal: Welcome to the arrangement. Very few people leave it. Fewer still on their own terms.
+
+walkout: You left the table on {planet}. That's all right. We'll sit down with your suppliers instead. And your crews. And your creditors.
+walkout: You walked out on {planet}. Your fuel prices go up tomorrow. And the day after that.
+walkout: We had a seat ready for you on {planet}. Now someone else is sitting in it, and they're buying your debts.
+walkout: You left early. Your pilot took the long way home. So did ours.
+walkout: The Syndicate doesn't chase anyone. We just wait at every place they have to stop.
+walkout: Walking away from {planet} is free. Everything after it costs extra.
+walkout: You left. We stayed. We'll be talking to {planet}'s dock masters about you.
+walkout: Strange. Your contacts on {planet} all seem to be busy now. Every one of them.
+walkout: We don't take rejection personally. We take it professionally.
+walkout: The offer on {planet} has expired. The memory of it hasn't.
+walkout: Leave the table if you like. The table follows you.
+walkout: Your name has been moved to the part of the ledger where interest compounds.
+
+kept: You delivered. Your name stays in the good column of our ledger. For now.
+kept: You kept your promise. We knew you would, but it's nice to see it.
+kept: Delivered in full. The Syndicate remembers people who deliver. It forgets the rest.
+kept: Promise kept. Your fuel prices will hold steady this round.
+kept: You did exactly what you said. Our accountants find that soothing.
+kept: Your word is good. In our business, that's worth more than spice.
+kept: We had people watching to see if you'd keep it. They're reporting good news.
+kept: Kept. Recorded. Remembered. The good kind of remembered.
+kept: Do this often enough and the Syndicate starts to protect you without being asked.
+kept: You honored the deal near {planet}. Our ships will wave you through.
+kept: Reliable people live long, comfortable lives. Keep being reliable.
+kept: A promise kept is a debt repaid. You owe us nothing today. Enjoy it.
+
+broke: You broke your word. Your crews will hear it from us first.
+broke: You promised. We won't come for you tonight. We'll buy your debts, close your ports, and wait. We are very good at waiting.
+broke: A broken promise is just an unpaid debt. We are very good at collecting.
+broke: You broke the deal. Every dock on the Outer Rim will know by morning.
+broke: We wrote down your promise. Today we wrote down that you broke it. Both are permanent.
+broke: Your supply lines are about to get very long, Commander. And very expensive.
+broke: We never threaten people over a broken promise. Only everything they own.
+broke: Your crews will be paid on time this round. Next round, we'll see who pays them.
+broke: The Syndicate gave you credit. As of today, your credit is gone everywhere.
+broke: Your promise was worth nothing. We'll make sure the rest of your holdings follow it.
+broke: Every merchant who sells to you just got a visit. Friendly. For now.
+broke: Broken promises have a way of breaking other things. Slowly. One shipment at a time.
+
+@KESSEL: Every gram of spice on Kessel is counted. So is every step you take.
+@KESSEL: Kessel's mines run on our schedule. You hold the ground. We hold the clock.
+@OBA DIAH: Oba Diah's spires were built on spice. Every stone there remembers who paid for it.
+@OBA DIAH: You hold Oba Diah. The families who run it are still ours. They always will be.
+@BESPIN: Bespin has a thousand windows. We rent all of them.
+@BESPIN: Bespin's gas buys a lot of quiet. We hope you know who you've been buying it from.
+@DATHOMIR: Dathomir's witches never paid us. Perhaps you'll have better luck. We doubt it.
+@TATOOINE: Every spice runner on Tatooine has our number. Most of them owe us. So now do you.
+
+# 3.1-dev.49 courted -- you won / bought a world from OUR RIVAL by talks or Credits (we grumble)
+courted: You did business with the Dawn over {planet}. We always know who's buying.
+courted: {planet} came to you through Crimson Dawn hands. Those hands owe us money.
+courted: We heard the Dawn got a good price for {planet}. We heard it from your quartermaster.
+courted: Every credit the Dawn made on {planet} came out of our pocket. Interesting choice.

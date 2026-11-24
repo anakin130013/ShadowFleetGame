@@ -1,0 +1,115 @@
+# BIG MOMENTS -- rare (each at most once per player per game), gold PRIORITY
+# chip + longer static; they replace the normal tier message for that action.
+# Format: <moment> <faction>: <line>   faction = R E P C (who speaks).
+#   firstblood  -- the first planet anyone captures this game; the faction that lost it speaks
+#   seat        -- their HOME WORLD falls (2.0: Yavin 4 R, Mustafar E, Oba Diah P, Dathomir C; was the seats of power)
+#   core        -- your first Core world; the Core world's faction speaks
+#   allied      -- you reach Allied; that faction welcomes you
+#   betrayal    -- you attack a faction you're Favorable+ with (first time)
+#   oathbreaker -- you break a promise to a faction you're Allied with
+#   fleet       -- you destroy another player's fleet; that player's faction answers
+#   lastround   -- the final round begins; your own faction speaks
+
+firstblood R: The first world of this war has fallen, and it was ours. Every fleet in the galaxy now knows your name.
+firstblood R: You fired the first shot of this war on {planet}. History will remember it. So will we.
+firstblood R: The galaxy was holding its breath. You let it out on {planet}. Now everyone's moving.
+firstblood E: The first world of this war has fallen, and it was ours. Every fleet in the galaxy now knows your name. So do we.
+firstblood E: {planet} is the first casualty of this campaign. The Empire is opening a new file. It is titled with your name.
+firstblood E: The first blood of the war was Imperial. The last will not be.
+firstblood P: First blood, on {planet}. Ours. Everyone saw it. Now everyone will see what we do next.
+firstblood P: You opened this war on {planet}. We'll be the ones who decide how much it costs you.
+firstblood P: The whole galaxy watched you take {planet} first. We watched more closely than anyone.
+firstblood C: How thrilling. The first world of the war, and you chose ours. We'll treasure the gesture.
+firstblood C: {planet} falls first. Everyone will remember who started it, darling. We'll make sure of it.
+firstblood C: You've drawn first blood on {planet}. Crimson Dawn always draws last.
+
+seat E: You hold Mustafar. Somewhere a Moff is drafting your execution order. They write slowly. I'd use the time.
+seat E: Mustafar, taken. The Empire's own forge, held by a warlord from the Outer Rim. The galaxy will never forget this day. Neither will we.
+seat E: You stand on Mustafar now. The ground there is uncomfortable, Commander. Ask anyone who has burned on it.
+seat R: Yavin was our last refuge. You've taken the one place they couldn't find us. Now they can find us everywhere.
+seat R: You hold Yavin 4. Do you know how many of our pilots flew out of that temple and never came back? We do. Every name.
+seat R: Our heart was on Yavin, Commander. You've taken it. We'll beat on without one if we have to.
+seat P: You took Oba Diah. Do you know how many people have tried? Do you know where they are now?
+seat P: Oba Diah. Our home, our vaults, our families. You hold it now. Everything you own is ours to take in return.
+seat P: Nobody has ever held Oba Diah and kept their fortune. Some kept their lives. Ask them which they'd rather have.
+seat C: Dathomir answers to us. It will again. Until then, nothing you love is safe, and nothing you own is yours.
+seat C: You've taken Dathomir. How daring. How historic. How very short your history is going to be.
+seat C: Dathomir was the jewel in our crown. You've taken it. We have so many other crowns, and such long memories.
+
+core R: Corellia has fallen. The Core hasn't been breached in a generation, Commander. Everyone is watching what you do next.
+core R: You've broken into the Core. The Alliance has dreamed of that for twenty years. Don't waste it.
+core R: The Core has fallen to you. The galaxy just tilted. Hold on tight.
+core E: The Core has been breached. This has not happened in living memory. It will not happen again.
+core E: You hold a Core world. The Empire is no longer treating you as a nuisance. You are now a campaign.
+core E: The Core falls to an outsider. Every Imperial fleet within range has received new orders. They concern you.
+core P: You're in the Core now. Prices are higher here. So is the drop.
+core P: The Core has fallen to you. Every lock in the galaxy just changed. We already have the new keys.
+core P: The richest worlds in the galaxy, and you hold one. We'd say congratulations, but we'd rather say interest.
+core C: The Core, Commander. How glamorous. Everyone who matters is watching you now. So are we, closest of all.
+core C: You've taken a Core world. Welcome to the part of the galaxy where knives are worn as jewelry.
+core C: The Core has fallen. How delicious. We'd like a seat at whatever table you're building.
+
+allied R: From today you fight beside us, not near us. Welcome to the Alliance, Commander.
+allied R: You've earned something we don't give lightly. Our trust. All of it. Welcome home.
+allied R: The Alliance counts you as one of its own now. Every cell, every pilot, every safehouse is open to you.
+allied E: The Empire recognizes you as an ally. Few receive that designation. Fewer survive losing it.
+allied E: By order of the regional governor, you are now a friend of the Empire. Act accordingly.
+allied E: Your loyalty has been verified. The Empire's full cooperation is now at your disposal. Use it wisely.
+allied P: You're family now. The Syndicate protects family. And the Syndicate is everywhere.
+allied P: Welcome to the inner ledger, Commander. From here on, our eyes are your eyes.
+allied P: Few outsiders have ever been trusted like this. Every dock, every runner, every debt we hold now works for you.
+allied C: Welcome to the family, darling. Crimson Dawn takes care of its own. Beautifully.
+allied C: You're one of us now. Every door in the underworld opens for you. Do knock politely.
+allied C: Our highest honor, Commander: our complete confidence. Treat it like the treasure it is.
+
+betrayal R: We stood beside you. You opened fire on us. The Alliance will tell this story for a long time, and you won't like your part in it.
+betrayal R: We trusted you with everything we had left. You turned your guns on {planet}. That's a wound that doesn't close.
+betrayal R: The Empire never pretended to be our friend. You did. That makes you worse.
+betrayal E: You have betrayed the Empire. This is no longer a disagreement. This is a war, and you have chosen the losing side.
+betrayal E: An ally of the Empire, attacking Imperial worlds. There is a special division for people like you. It has never failed.
+betrayal E: Your treaty is void. Your protections are void. Your future is under review.
+betrayal P: You betrayed the Syndicate. Every debt you've ever had is ours now. Every one.
+betrayal P: We let you inside. You hit {planet}. From today, everything you build costs twice as much and arrives half as often.
+betrayal P: Betrayal. We've seen it a thousand times. We've never once let it go unpaid.
+betrayal C: We poured you wine. You poured it on the floor. You'll find our hospitality has an end.
+betrayal C: You've betrayed Crimson Dawn. How exciting. Nobody's done that in years. We'd forgotten how much fun it is to respond.
+betrayal C: Such a beautiful friendship, and you've broken it on {planet}. We'll make something beautiful out of the pieces. You won't enjoy it.
+
+oathbreaker R: We gave you everything and you couldn't keep one promise. The Alliance will survive this. Our faith in you won't.
+oathbreaker R: An ally broke their word. Do you know what that does to people who have nothing else to believe in?
+oathbreaker R: You were family, and you lied to us. We'll still fight the Empire. We just won't fight it with you.
+oathbreaker E: An ally of the Empire, failing to deliver. Your file has been sent upstairs. Nobody comes back from upstairs.
+oathbreaker E: The Empire forgives failure in its enemies. It never forgives it in its friends.
+oathbreaker E: You have broken a promise to the Empire while enjoying its protection. That protection has ended.
+oathbreaker P: A partner, breaking a promise. The whole Syndicate will hear of it by morning, and so will every price you pay.
+oathbreaker P: You were in the inner ledger. You broke your word anyway. There's a page after the inner ledger. You won't like it.
+oathbreaker P: Family doesn't break promises, Commander. We'll be reconsidering whether you're family.
+oathbreaker C: Darling, you broke a promise to us. Us. We're almost flattered you thought you could.
+oathbreaker C: One of our own, breaking their word. We'll be holding a little gathering about you. You're not invited.
+oathbreaker C: We gave you the keys to our house, and you lied to us in it. We'll be changing the locks. And the guards.
+
+fleet R: You destroyed one of our fleets. Those were people's sons and daughters. We'll remember every one of them.
+fleet R: That fleet was everything we could scrape together. You've set the Rebellion back a year. We'll make it back.
+fleet R: You won the battle. The Alliance has lost plenty of battles. We've never lost the war.
+fleet E: You destroyed an Imperial battle group. It will be replaced by tomorrow. You will not be.
+fleet E: An entire fleet, lost. The Empire has ten thousand more. You have the rest of your life to regret this.
+fleet E: You destroyed our fleet. Our shipyards don't even slow down for losses this small.
+fleet P: You sank one of our fleets. Ships are just money, Commander. We have a great deal of money.
+fleet P: That fleet carried our spice, our people, and our patience. Only the patience is left.
+fleet P: Every ship you destroyed was insured. By us. Guess who's paying the premium now.
+fleet C: You destroyed our fleet. How energetic of you. We'll replace it with something prettier, and point it at you.
+fleet C: A whole fleet, gone. Crimson Dawn never mourns ships. We only remember who sank them.
+fleet C: You won that one, darling. Do enjoy the feeling. It's the kind that doesn't last.
+
+lastround R: This is it, Commander. One more round. Make it count for everyone who couldn't be here.
+lastround R: The last round. Whatever happens, the Alliance is proud to have fought with you. Now let's finish it.
+lastround R: One more push. The galaxy is watching. Show them what hope looks like.
+lastround E: Final round. The Empire expects victory. It does not accept anything else.
+lastround E: The campaign concludes this round. Every failure will be reviewed. Do not give us any to review.
+lastround E: One round remains. History is written by the winners, Commander. Pick up your pen.
+lastround P: Last round. Every debt in the galaxy comes due now. Make sure you're the one collecting.
+lastround P: One round left. We've watched every move you made. Make the last one worth watching.
+lastround P: Final round. The Syndicate has placed its bets. Don't make us lose money.
+lastround C: The last round, darling. Make it beautiful. Make it memorable. Make it ours.
+lastround C: One final dance. Crimson Dawn always finishes the night on top. Don't embarrass us.
+lastround C: Everything ends tonight. Let's make sure it ends gorgeously.

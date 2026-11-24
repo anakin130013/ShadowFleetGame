@@ -1,0 +1,428 @@
+<html><body style="margin:0;background:transparent"><canvas id="c"></canvas><script>
+// Shadow Fleet portraits v2 (2026-10-14): human commanders drawn from shape
+// functions instead of hand-placed ellipses, so the same character renders at
+// different grids/proportions. What changed vs portraits.html (user: "chins/
+// necks look a little off", planets look higher quality):
+//  - face = cranium arc -> cheekbones -> tapered jaw -> rounded chin (not an oval)
+//  - narrower neck in shadow, with the jaw's cast shadow on it
+//  - sloped shoulders (trapezius) instead of a half-ellipse torso
+//  - 4-tone hue-shifted shading per material (warm lights, cool shadows)
+//  - selective outline: each edge pixel is a dark shade of what it borders
+// Open portraits_v2.html#<name>:<preset>, e.g. #ilsa:bust. Original
+// characters only (Star Wars feel, no likenesses).
+
+// ---------- color ----------
+function hexToHsl(h) {
+  const r = parseInt(h.slice(1,3),16)/255, g = parseInt(h.slice(3,5),16)/255, b = parseInt(h.slice(5,7),16)/255;
+  const mx = Math.max(r,g,b), mn = Math.min(r,g,b); let H = 0, S = 0; const L = (mx+mn)/2;
+  if (mx !== mn) { const d = mx-mn; S = L > .5 ? d/(2-mx-mn) : d/(mx+mn);
+    H = mx === r ? (g-b)/d + (g < b ? 6 : 0) : mx === g ? (b-r)/d + 2 : (r-g)/d + 4; H *= 60; }
+  return [H,S,L];
+}
+function hslToHex(H,S,L) {
+  H = ((H%360)+360)%360; S = Math.max(0,Math.min(1,S)); L = Math.max(0,Math.min(1,L));
+  const f = n => { const k = (n + H/30) % 12, a = S*Math.min(L,1-L); const c = L - a*Math.max(-1,Math.min(k-3,9-k,1));
+    return Math.round(c*255).toString(16).padStart(2,'0'); };
+  return '#' + f(0) + f(8) + f(4);
+}
+// Ramp: [highlight, base, shade, deep] -- lights warm (hue toward yellow),
+// shadows cool (hue toward purple/blue) and a touch more saturated.
+function ramp(base) {
+  const [h,s,l] = hexToHsl(base);
+  const warm = d => h + (h < 60 || h > 300 ? d : (h < 200 ? -d : d));
+  return [hslToHex(warm(4), s*0.92, l+0.08), base, hslToHex(h - 4, s+0.01, l-0.10), hslToHex(h - 9, s+0.03, l-0.19)];
+}
+function dark(c, k) { const [h,s,l] = hexToHsl(c); return hslToHex(h - 6, s + 0.04, l * k); }
+
+// ---------- proportions ----------
+// u: -1..1 across the frame, v: 0..1 down. R = head half-width (u units).
+const PRESETS = {
+  classic: { W:24, H:28, top:0.12, chin:0.76, R:0.50, neck:0.20, shTop:0.82, shW:1.00 },  // today's framing, fixed anatomy
+  bust:    { W:32, H:40, top:0.09, chin:0.63, R:0.38, neck:0.15, shTop:0.71, shW:1.00 },  // smaller head, more shoulders
+  close:   { W:32, H:40, top:0.06, chin:0.74, R:0.50, neck:0.19, shTop:0.83, shW:1.00 },  // big head, detailed face
+  // 2026-10-14 user: "squished a little horizontally" -> ~15% wider heads.
+  classicW:{ W:24, H:28, top:0.16, chin:0.785, R:0.58, neck:0.23, shTop:0.845, shW:1.00 },
+  closeW:  { W:32, H:40, top:0.06, chin:0.74, R:0.58, neck:0.22, shTop:0.83, shW:1.00 },
+  hd:      { W:48, H:60, top:0.08, chin:0.70, R:0.50, neck:0.18, shTop:0.80, shW:1.00 },  // 3.1-dev.86: the black-market broker (user: "the most high definition portrait we have made yet")
+};
+
+// ---------- characters ----------
+const PEOPLE = {
+  ilsa:  { skin:'#D9A07A', hair:'#4A2E1E', hairStyle:'flowy', jaw:0.70, chin:0.32, eye:'#2A1A12', brow:'#3A2418', mouth:'#A65644',
+           cloth:'#C8762A', collar:'open', under:'#E8E0D0', pin:'#FFC933' },
+  marr:  { skin:'#C89070', hair:'#A4A4A0', hairStyle:'receding', beard:'#ECECE6', jaw:0.86, chin:0.55, eye:'#1E1E1E', brow:'#E0E0DA', browThick:true,
+           mouth:'#6A4A40', cloth:'#5C6A3A', collar:'field', pin:'#FFC933', scar:true, age:true },
+  kess:  { skin:'#8A5A3E', hairStyle:'pilot', jaw:0.74, chin:0.40, eye:'#1A1210', brow:'#2A1A12', mouth:'#5A3226', grin:true,
+           cloth:'#D8682A', collar:'harness', under:'#E8E0D0' },
+  stahl: { skin:'#E0BFA8', hair:'#8A8F96', hairStyle:'cap', jaw:0.82, chin:0.45, eye:'#20242A', brow:'#5A5048', browFlat:true,
+           mouth:'#8A5A50', cloth:'#5E6874', collar:'high', rank:true, age:true },
+  vell:  { skin:'#CFA48C', hair:'#F2EEE6', hairStyle:'bob', jaw:0.66, chin:0.28, eye:'#3A6A9A', brow:'#9A9080', browArch:true,
+           mouth:'#9A3A3A', cloth:'#22262C', collar:'high', cyl:true },
+  kaan:  { skin:'#C08A64', hair:'#16121A', hairStyle:'slick', jaw:0.74, chin:0.34, eye:'#1A0A0A', brow:'#16121A', browArch:true,
+           mouth:'#7A3A34', smirk:true, cloth:'#1E181C', collar:'crimson', stripes:true, earring:true },
+  oxa:   { skin:'#B88466', hairStyle:'shaved', jaw:0.84, chin:0.50, eye:'#1A1A1A', brow:'#3A2A20',
+           mouth:'#5A3226', cloth:'#4A3A30', collar:'scarf', goggles:true, scar:true, stud:true },
+  // Non-humans and helmets (2026-10-14 cleanup pass).
+  vosk:  { skin:'#8A9A86', hairStyle:'hood', hood:'#3A2448', jaw:0.80, chin:0.50, eye:'#FFB040', glowEyes:true, mouth:'#2E3238',
+           cloth:'#3A2448', mask:'respirator' },
+  rhel:  { skin:'#7A9AA6', hairStyle:'none', skull:0.45, ridges:true, jaw:0.62, chin:0.36, eye:'#C07BFF', deepEyes:true,
+           mouth:'#3A4A52', cloth:'#4A2A66', collar:'sash', tendrils:true },
+  brakk: { skin:'#6E7A5A', hairStyle:'horns', jaw:1.00, chin:0.80, eye:'#FF6040', deepEyes:true, browRidge:true, mouth:'#2A1A1A',
+           tusks:true, cloth:'#2A2A2E', collar:'armorRed' },
+  ymra:  { skin:'#E8D0C4', hairStyle:'hood', hood:'#8A121C', jaw:0.66, chin:0.30, eye:'#3A0A10', brow:'#2A1418',
+           mouth:'#9A3A3A', cloth:'#5A0E14', mask:'veil', circlet:true },
+  // Defectors (2026-11-06, UI 3.1): each wears its new faction's colors with one
+  // trace of the old one (Danto's Imperial collar, Merrow's Rebel pin, Nyra's
+  // Dawn stripes, Korrik's Pyke scarf).
+  danto: { skin:'#C49A7E', hair:'#B8B4AC', hairStyle:'slick', jaw:0.72, chin:0.36, eye:'#2A2A30', brow:'#8A8478', browArch:true,
+           mouth:'#8A4A40', cloth:'#7A5A3A', collar:'high', pin:'#FFC933', age:true },
+  merrow:{ skin:'#D8B090', hair:'#6A4A2A', hairStyle:'flowy', jaw:0.76, chin:0.40, eye:'#1E2A1E', brow:'#4A3420', mouth:'#8A4A3A', grin:true,
+           cloth:'#4A525C', collar:'open', under:'#C8CCD0', pin:'#FFC933' },
+  nyra:  { skin:'#B07A5A', hair:'#141018', hairStyle:'bob', jaw:0.66, chin:0.28, eye:'#3A0A10', brow:'#141018', browArch:true,
+           mouth:'#6A2A2A', cloth:'#2E2040', collar:'scarf', stripes:true, stud:true },
+  korrik:{ skin:'#A87A5E', hairStyle:'shaved', jaw:0.96, chin:0.72, eye:'#1A1A1A', brow:'#3A2A20', browRidge:true, mouth:'#4A2A22',
+           cloth:'#2A2A2E', collar:'armorRed', scar:true, earring:true },
+  // 3.1-dev.86 THE BLACK-MARKET BROKER (user: "make the black market guy a pixel sprite like the rest") -- three takes, no faction colors.
+  brokerA:{ skin:'#6E5E52', hairStyle:'hood', hood:'#2E2A26', jaw:0.80, chin:0.50, eye:'#FFB040', glowEyes:true, mouth:'#2E3238',
+           cloth:'#2A2420', collar:'scarf', scarf:'#5A4A36', mask:'respirator', maskLight:'#E8A03C' },
+  brokerB:{ skin:'#A27E64', hairStyle:'hood', hood:'#26302E', jaw:0.78, chin:0.46, eye:'#1A1A1A', brow:'#2A2018', mouth:'#5A3226', smirk:true,
+           cloth:'#3A3026', collar:'scarf', scarf:'#6A5236', goggles:true, scar:true, earring:true },
+  brokerC:{ skin:'#7E8E70', hairStyle:'hood', hood:'#3A3226', jaw:0.90, chin:0.62, eye:'#4FE3D0', glowEyes:true, deepEyes:true, browRidge:true, mouth:'#2A1A1A',
+           tusks:true, cloth:'#2E2A22', collar:'scarf', scarf:'#2E5A54' },
+  brokerD:{ skin:'#B0282E', hairStyle:'none', skull:0.10, jaw:0.70, chin:0.34, eye:'#F0B030', brow:'#1A0A0C', browArch:true, mouth:'#2A0A0E', smirk:true,
+           cloth:'#141216', collar:'high', lekku:true, lekkuBand:'#141014', markings:'#141014', earring:true },
+  brokerE:{ skin:'#4A3A42', hairStyle:'none', skull:0.10, jaw:0.64, chin:0.26, eye:'#F0C040', brow:'#120A0E', browArch:true, mouth:'#A8202C', smirk:true,
+           cloth:'#1A0E12', collar:'crimson', lekku:true, lekkuSkin:'#4A3A42', lekkuEdge:'#140C10', lekkuBand:'#C0202A', markings:'#C0202A' },
+  brokerF:{ skin:'#A8242C', hairStyle:'none', skull:0.10, jaw:0.64, chin:0.26, eye:'#F2E8C8', brow:'#2A0A0E', browArch:true, mouth:'#3A0A10', smirk:true,
+           cloth:'#141014', collar:'high', lekku:true, lekkuBand:'#0E0A0C', markings:'#0E0A0C', markLite:true, circlet:true, earring:true },
+  brokerG:{ skin:'#A0745C', hairStyle:'hood', hood:'#221E1C', jaw:0.56, chin:0.20, eye:'#FFB040', glowEyes:true, brow:'#2A1810', browArch:true,
+           mouth:'#8A2234', fullLips:true, lashes:'#140C0A', deepHood:true, cloth:'#1A1614', collar:'scarf', scarf:'#4A3C2C', earring:true },
+  brokerH:{ skin:'#B48468', hairStyle:'hood', hood:'#2A2420', jaw:0.62, chin:0.24, eye:'#FFB040', glowEyes:true, brow:'#2A1810', browArch:true,
+           mouth:'#6A1A22', cloth:'#1E1A18', collar:'scarf', scarf:'#5A4A36', mask:'veil', veil:'#2A2226', earring:true },
+  thane: { skin:'#3A3E46', hairStyle:'trooper', jaw:0.86, chin:0.60, eye:'#1A1A1A', mouth:'#6A4A40',
+           cloth:'#D8DCE0', collar:'plate' },
+};
+
+// ---------- raster helpers ----------
+let W, H, g;
+const px = (x, y, c) => { if (x >= 0 && x < W && y >= 0 && y < H) g[y][x] = c; };
+const U = x => ((x + 0.5) / W) * 2 - 1, V = y => (y + 0.5) / H;
+const X = u => Math.round((u + 1) / 2 * W - 0.5), Y = v => Math.round(v * H - 0.5);
+function fill(test, color) { for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const c = test(U(x), V(y), x, y); if (c) px(x, y, c === true ? color : c); } }
+
+function render(name, preset, style) {
+  const P = PRESETS[preset], C = Object.assign({}, PEOPLE[name], style ? { hairStyle: style } : {});
+  W = P.W; H = P.H; g = Array.from({length: H}, () => Array(W).fill(null));
+  const sk = ramp(C.skin), cl = ramp(C.cloth), hr = C.hair ? ramp(C.hair) : null;
+  const R = P.R, top = P.top, chin = P.chin, fh = chin - top;
+  const big = W >= 32;
+  // Face half-width at t (0 = crown, 1 = chin tip).
+  const faceHW = t => {
+    const sk0 = C.skull || 0;  // taller cranium (aliens)
+    if (t < -sk0 || t > 1) return -1;
+    if (t < 0.52) { const k = (0.52 - t) / (0.52 + sk0); return R * Math.pow(Math.max(0, 1 - Math.pow(k, 4.2)), 1 / 4.2); }  // flat-topped dome, not a cone (user: "a hair too poky")
+    if (t < 0.80) return R * (1 - (1 - C.jaw) * ((t - 0.52) / 0.28));
+    const k = (t - 0.80) / 0.20;
+    return R * (C.jaw - (C.jaw - C.chin) * k) * Math.sqrt(Math.max(0, 1 - Math.pow(k, 3)));
+  };
+  const tOf = v => (v - top) / fh;
+  // Hair / helmet volume: the same rounded skull, started a bit higher and wider.
+  const shellHW = (t, lift, pad) => { const tt = (t + lift) / (1 + lift); return tt < 0 ? -1 : faceHW(Math.min(tt, 0.5)) + R * pad; };
+
+  // 1. Buns: a separate round shape above the crown, drawn over the hair with
+  // a dark seam underneath and a highlight, so it doesn't melt into the hair
+  // as one pointy cone (user 2026-10-14). Long hair: drawn behind the face.
+  const bun = () => {
+    if (C.hairStyle !== 'bun' && C.hairStyle !== 'slickbun') return;
+    const cx = W / 2 - 0.5, cy = Y(top) - (C.hairStyle === 'bun' ? 2.2 : 1.6);
+    const rx = R * W / 2 * (C.hairStyle === 'bun' ? 0.46 : 0.38), ry = C.hairStyle === 'bun' ? 2.3 : 1.8;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const dx = (x - cx) / rx, dy = (y - cy) / ry; if (dx * dx + dy * dy > 1) continue;
+      px(x, y, dy > 0.45 ? hr[3] : (dx < -0.25 && dy < -0.1 ? hr[0] : (dx > 0.35 ? hr[2] : hr[1])));
+    }
+  };
+  const backHair = () => {
+    if (C.hairStyle !== 'flowy' && C.hairStyle !== 'bob') return;
+    const long = C.hairStyle === 'flowy';
+    fill((u, v) => {
+      const t = tOf(v); if (t < 0.2) return null;
+      const hw = faceHW(0.5) + R * (long ? 0.22 : 0.20);
+      const end = long ? P.shTop + 0.07 - 0.025 * Math.cos(u * 14) : chin + 0.015;
+      if (Math.abs(u) > hw || v > end) return null;
+      if (Math.abs(u) > hw - R * 0.10) return u > 0 ? hr[3] : hr[2];
+      return u > 0 ? hr[2] : (long && Math.abs(u + R * 0.6) < R * 0.08 ? hr[0] : hr[1]);
+    });
+  };
+
+  // Hood (Vosk, Ymra): the back of the hood sits behind the face and drapes
+  // onto the shoulders; its brim is drawn over the forehead in step 7.
+  const hd = C.hood ? ramp(C.hood) : null;
+  const hoodHW = t => (t <= 0.5 ? shellHW(t, 0.16, 0.30) : faceHW(0.5) + R * 0.30 + (t - 0.5) * R * 0.7);
+  const backHood = () => {
+    if (C.hairStyle !== 'hood') return;
+    fill((u, v) => {
+      const t = tOf(v), hw = hoodHW(t); if (hw < 0 || Math.abs(u) > hw || v > P.shTop + 0.10) return null;
+      if (t > 0.2 && Math.abs(u) < faceHW(Math.min(t, 1)) + R * 0.10) return hd[3];  // shadow inside the hood
+      return u > R * 0.3 ? hd[2] : (u < -R * 0.6 ? hd[0] : hd[1]);
+    });
+  };
+
+  // 2. shoulders: trapezius slope from the neck out to the frame edge
+  fill((u, v) => {
+    const d = v - P.shTop; if (d < 0) return null;
+    const s = Math.min(1, d / 0.10), hw = P.neck + (P.shW - P.neck) * (s * s * (3 - 2 * s));
+    if (Math.abs(u) > hw) return null;
+    if (u > hw - 0.12 && u > 0.2) return cl[3];
+    if (u > 0.30) return cl[2];
+    if (u < -0.35 && d < 0.05) return cl[0];
+    return cl[1];
+  });
+  backHair();
+  backHood();
+  // 3. neck, in shadow, with the jaw's cast shadow at the top
+  fill((u, v) => {
+    if (v < chin - 0.07 || v > P.shTop + 0.03) return null;
+    const hw = P.neck * (v < P.shTop - 0.02 ? 1 : 1.15);
+    if (Math.abs(u) > hw) return null;
+    if (v < chin + 0.035) return sk[3];
+    return u > hw * 0.25 ? sk[3] : sk[2];
+  });
+  // 4. ears
+  fill((u, v) => { if (['flowy', 'bob', 'hood', 'trooper', 'none', 'horns'].includes(C.hairStyle)) return null; const t = tOf(v); if (t < 0.40 || t > 0.62) return null; const hw = faceHW(0.5);
+    const e = Math.abs(u) - hw; return e > -0.02 && e < R * 0.09 ? (u > 0 ? sk[2] : sk[1]) : null; });
+  // 5. face with shading: light from the upper left
+  fill((u, v) => {
+    const t = tOf(v), hw = faceHW(t); if (hw <= 0 || Math.abs(u) > hw) return null;
+    const rel = u / hw;
+    if (rel > 0.84) return sk[3];                       // far (shadow) edge
+    if (rel > 0.42) return sk[2];                       // shadow side
+    if (t > 0.86 && rel > -0.2) return sk[2];           // under the chin
+    if (t > 0.70 && t < 0.86 && rel > 0.05) return sk[2];  // jaw plane
+    if (rel < -0.35 && t > 0.20 && t < 0.62) return sk[0];  // lit cheek / temple
+    return sk[1];
+  });
+
+  // 6. features (in pixel space)
+  const fx = u => X(u), fy = t => Y(top + fh * t);
+  const eyeU = R * 0.40, eyeT = 0.50, browT = big ? 0.42 : 0.43;
+  // eye sockets slightly shaded
+  if (big) for (const s of [-1, 1]) { px(fx(s * eyeU) + (s > 0 ? 0 : -1), fy(eyeT) - 1, s > 0 ? sk[3] : sk[2]); px(fx(s * eyeU) + (s > 0 ? -1 : 0), fy(eyeT) - 1, s > 0 ? sk[3] : sk[2]); }
+  // brows
+  for (const s of [-1, 1]) {
+    const x0 = fx(s * eyeU), y0 = fy(browT), w = big ? 2 : 1;
+    for (let k = -w; k <= w - (big ? 0 : 1) + (big ? 0 : 1); k++) {
+      let yy = y0;
+      if (C.browArch && Math.abs(k) === w) yy += 1;
+      if (C.browArch && k === (s > 0 ? -w : w)) yy += 0;
+      px(x0 + k, yy, C.brow);
+      if (C.browThick) px(x0 + k, yy - 1, C.brow);
+    }
+  }
+  // eyes: white + iris on the big grid, one dark pixel on the small one
+  for (const s of [-1, 1]) {
+    const x0 = fx(s * eyeU), y0 = fy(eyeT);
+    if (C.deepEyes) { px(x0 - 1, y0, '#1A0E24'); px(x0 + 1, y0, '#1A0E24'); px(x0, y0 - 1, '#1A0E24'); }
+    if (C.glowEyes) px(x0 + (s > 0 ? -1 : 1), y0, dark(C.eye, 0.6));
+    if (big) { px(x0 + (s > 0 ? 1 : -1), y0, s > 0 ? '#C8C0B8' : '#F0E8E0'); px(x0, y0, C.eye); px(x0 + (s > 0 ? -1 : 1), y0, sk[2]); }
+    else px(x0, y0, C.eye);
+  }
+  // nose: shadow down the right side, nostril, highlight on the bridge
+  const nx = fx(0);
+  for (let t = 0.54; t <= 0.66; t += 1 / (fh * H)) px(nx + 1, fy(t), sk[2]);
+  px(nx + 1, fy(0.69), sk[3]); px(nx, fy(0.69), sk[2]);
+  if (big) px(nx, fy(0.60), sk[0]);
+  // mouth
+  const my = fy(0.80), mw = big ? 3 : 2;
+  for (let k = -mw + 1; k <= mw - 1; k++) px(nx + k, my, C.mouth);
+  if (C.fullLips && big) { for (let k = -mw + 2; k <= mw - 2; k++) px(nx + k, my + 1, dark(C.mouth, 1.25)); }
+  else if (big) px(nx, my + 1, sk[0]);                     // lower lip catch-light
+  if (C.smirk) { px(nx + mw - 1, my - 1, C.mouth); px(nx - mw + 1, my, sk[2]); }
+  if (C.grin) { for (let k = -mw + 2; k <= mw - 2; k++) px(nx + k, my, '#F0E8E0'); px(nx - mw + 1, my - 1, C.mouth); px(nx + mw - 1, my - 1, C.mouth); }
+  if (C.age) { px(fx(-R * 0.55), fy(0.74), sk[2]); px(fx(R * 0.55), fy(0.74), sk[3]); }
+  if (C.scar) { const sx = fx(R * 0.45); for (let k = 0; k < (big ? 4 : 3); k++) px(sx + (k > 1 ? 1 : 0), fy(0.40) + k, dark(C.skin, 0.75)); }
+  if (C.stripes) for (const k of [0, 2]) { px(fx(-R * 0.62), fy(0.62) + k, '#C0202A'); px(fx(-R * 0.62) + 1, fy(0.62) + k, '#C0202A'); }
+
+  // 7. hair / headgear
+  const hairCap = (tMax, sideT, sideK = 0.78) => fill((u, v) => {
+    const t = tOf(v); const hw = shellHW(t, 0.07, 0.07);
+    if (hw < 0 || Math.abs(u) > hw) return null;
+    const side = Math.abs(u) > faceHW(0.5) * sideK && t < sideT;
+    if (t > tMax && !side) return null;
+    return u > R * 0.35 ? hr[2] : (u < -R * 0.2 && t < tMax * 0.6 ? hr[0] : hr[1]);
+  });
+  if (C.hairStyle === 'bun') hairCap(0.30, 0.66);
+  if (C.hairStyle === 'slickbun') hairCap(0.26, 0.50);
+  if (C.hairStyle === 'flowy') { hairCap(0.30, 0.95, 0.90);  // side-swept fringe on the lit side
+    fill((u, v) => { const t = tOf(v); return t > 0.28 && t < 0.37 && u > -R * 0.85 && u < -R * 0.05 + (0.37 - t) * R * 2 ? (u < -R * 0.5 ? hr[0] : hr[1]) : null; }); }
+  if (C.hairStyle === 'bob') { hairCap(0.27, 0.92, 0.90); px(fx(0), fy(0.06), hr[3]); px(fx(0), fy(0.14), hr[3]); }  // center part
+  bun();
+  if (C.hairStyle === 'slick') { hairCap(0.27, 0.48); px(fx(0), fy(0.29), hr[1]); px(fx(0) - 1, fy(0.29), hr[1]); }
+  if (C.hairStyle === 'receding') fill((u, v) => { const t = tOf(v), hw = shellHW(t, 0.05, 0.05);
+    if (hw < 0 || Math.abs(u) > hw) return null; const sideOnly = Math.abs(u) > faceHW(0.5) * 0.80;
+    if ((t < 0.16 && Math.abs(u) > R * 0.35) || (sideOnly && t < 0.52)) return u > 0 ? hr[2] : hr[1]; return null; });
+  if (C.beard) { const br = ramp(C.beard); fill((u, v) => { const t = tOf(v), hw = faceHW(t);
+    if (t < 0.64 || hw <= 0 || Math.abs(u) > hw + 0.02) return null; if (t < 0.76 && Math.abs(u) < hw * 0.55) return null;
+    return u > hw * 0.3 ? br[2] : (u < -hw * 0.4 ? br[0] : br[1]); });
+    for (let k = -1; k <= 1; k++) px(nx + k, my, C.mouth); }
+  if (C.hairStyle === 'shaved') fill((u, v) => { const t = tOf(v), hw = faceHW(Math.max(t, 0.02));
+    if (t < 0 || t > 0.22 || Math.abs(u) > hw) return null; return u > R * 0.3 ? dark(C.skin, 0.62) : dark(C.skin, 0.74); });
+  if (C.hairStyle === 'cap') {
+    const cp = ramp('#6E7884');
+    fill((u, v) => { const t = tOf(v); if (t < -0.06 || t > 0.30) return null; if (Math.abs(u) > R * 1.08) return null;
+      if (t > 0.26) return '#2A2E34';                                    // brim
+      return u > R * 0.4 ? cp[2] : (u < -R * 0.4 ? cp[0] : cp[1]); });
+    px(fx(0), fy(0.10), '#D8E0E8'); px(fx(0) - 1, fy(0.10), '#D8E0E8');  // badge
+    for (const s of [-1, 1]) for (let t = 0.33; t < 0.52; t += 0.06) px(fx(s * faceHW(0.42)), fy(t), s > 0 ? hr[2] : hr[1]);  // gray temples
+  }
+  if (C.hairStyle === 'pilot') {
+    const hm = ramp('#E8E4DC');
+    fill((u, v) => { const t = tOf(v), hw = shellHW(t, 0.13, 0.14);
+      if (hw < 0 || Math.abs(u) > hw) return null;
+      const face = Math.abs(u) < faceHW(Math.max(t, 0.3)) * 0.82 && t > 0.34;
+      if (face || t > 0.70) return null;
+      if (t > 0.26 && t < 0.34) return '#2E4A5A';                        // visor (flipped up)
+      if (t > 0.02 && t < 0.08) return '#D8682A';                        // stripe
+      return u > R * 0.45 ? hm[2] : (u < -R * 0.3 ? hm[0] : hm[1]); });
+    for (let t = -0.12; t < 0.06; t += 0.04) px(fx(0), fy(t), '#FFC933');
+  }
+  if (C.goggles) { const gy = fy(eyeT); for (let x = fx(-faceHW(0.5)) - 1; x <= fx(faceHW(0.5)) + 1; x++) px(x, gy - 1, '#33333A');
+    for (const s of [-1, 1]) { const x0 = fx(s * eyeU); for (let k = -1; k <= 1; k++) { px(x0 + k, gy, '#FFB040'); px(x0 + k, gy - 1, k === -1 ? '#FFE0A0' : '#E89030'); } } }
+  if (C.earring) px(fx(faceHW(0.6)) + 1, fy(0.66), '#E8C060');
+  if (C.stud) px(fx(-faceHW(0.55)) - 1, fy(0.60), '#C07BFF');
+  // --- non-human / helmet details (2026-10-14 cleanup pass) ---
+  if (C.hairStyle === 'hood') {
+    fill((u, v) => { const t = tOf(v), hw = hoodHW(t); if (hw < 0 || Math.abs(u) > hw) return null;
+      const brim = t < (C.deepHood ? 0.40 : 0.30), side = Math.abs(u) > faceHW(Math.min(Math.max(t, 0), 1)) * 0.86 && t < 0.95;
+      if (!brim && !side) return null;
+      if (brim && t > 0.24 && Math.abs(u) < faceHW(0.4)) return C.deepHood && t > 0.33 ? dark(C.skin, 0.55) : hd[3];  // brim's shadow on the brow (deeper: a band of shadowed skin)
+      return u > R * 0.3 ? hd[2] : (u < -R * 0.6 && t < 0.4 ? hd[0] : hd[1]); });
+  }
+  if (C.mask === 'respirator') { const mk = ramp('#5A5F6A');
+    fill((u, v) => { const t = tOf(v), hw = faceHW(Math.min(t, 1)); if (t < 0.62 || t > 1.0 || Math.abs(u) > hw + 0.01) return null;
+      if (Math.abs(u) < R * 0.13) return t > 0.7 ? '#2E3238' : mk[2];               // filter grille
+      return t > 0.9 ? mk[3] : (u > R * 0.3 ? mk[2] : (u < -R * 0.4 ? mk[0] : mk[1])); });
+    for (const s of [-1, 1]) px(fx(s * R * 0.48), fy(0.72), C.maskLight || '#C07BFF'); }
+  if (C.mask === 'veil') { const vl = ramp(C.veil || '#B0202A');
+    fill((u, v) => { const t = tOf(v), hw = faceHW(Math.min(t, 1)); if (t < 0.62 || t > 1.02 || Math.abs(u) > hw + 0.01) return null;
+      if (t < 0.665) return '#E8C060';                                            // gold edge
+      return u > R * 0.3 ? vl[2] : (u < -R * 0.4 ? vl[0] : vl[1]); });
+    px(fx(-R * 0.35), fy(0.80), '#E8C060'); px(fx(R * 0.25), fy(0.88), '#E8C060'); }
+  // 3.1-dev.86 HEAD-TAILS (an original alien for the black-market broker): two thick tails from the sides of the skull,
+  // over the shoulders, shaded like the skin; optional dark bands. FACE MARKINGS: a brow stripe, lines under the eyes, a chin mark.
+  if (C.lekku) { const lk = ramp(C.lekkuSkin || dark(C.skin, 0.82)), edge = C.lekkuEdge || dark(C.skin, 0.45);
+    for (const s of [-1, 1]) fill((u, v) => {
+      const t = tOf(v); if (t < 0.02 || v > P.shTop + 0.17) return null;
+      // the tail leaves the skull high on the side and hangs down past the jaw, just outside the face, over the shoulder
+      const cu = s * (Math.max(faceHW(Math.min(Math.max(t, 0.18), 0.62)), R * 0.70) + R * 0.06 + Math.max(0, t - 0.70) * R * 0.18);
+      const hw = R * 0.19 * Math.min(1, (t - 0.02) / 0.16) * (1 - 0.35 * Math.max(0, t - 0.55));
+      const off = u - cu; if (Math.abs(off) > hw) return null;
+      if (Math.abs(off) > hw - R * 0.075) return edge;                      // an outline, so the tail reads apart from the face
+      if (C.lekkuBand && t > 0.55 && (Math.round(v * H) % 5 === 0)) return C.lekkuBand;
+      return off * s > hw * 0.25 ? lk[2] : off * s < -hw * 0.30 ? lk[0] : lk[1]; });
+  }
+  if (C.markings) {
+    if (!C.markLite) for (let tt = 0.04; tt < 0.36; tt += 0.03) px(fx(0), fy(tt), C.markings);
+    for (const s of [-1, 1]) for (let tt = eyeT + 0.07; tt < eyeT + 0.24; tt += 0.03) px(fx(s * eyeU), fy(tt), C.markings);
+    if (!C.markLite) px(fx(0), fy(0.93), C.markings);
+    if (C.markCheek) for (const s of [-1, 1]) { px(fx(s * R * 0.62), fy(0.62), C.markings); px(fx(s * R * 0.56), fy(0.68), C.markings); }
+  }
+  if (C.lashes && big) for (const s of [-1, 1]) { const x0 = fx(s * eyeU), gy = fy(eyeT); px(x0 + s * 2, gy - 1, C.lashes); }
+  if (C.circlet) { for (let x = fx(-R * 0.72); x <= fx(R * 0.72); x++) px(x, fy(0.33), '#E8C060'); px(fx(0), fy(0.33), '#D0343E'); }
+  if (C.ridges) for (let t = -0.38; t < 0.30; t += 0.14) { const hw = faceHW(t); if (hw > 0) for (let x = fx(-hw * 0.75); x <= fx(hw * 0.75); x++) px(x, fy(t), x > nx ? sk[3] : sk[2]); }
+  if (C.tendrils) for (const s of [-1, 1]) for (let y = fy(0.62); y <= Y(P.shTop) + 1; y++) px(fx(s * faceHW(0.66) * 0.92), y, s > 0 ? sk[3] : sk[2]);
+  if (C.browRidge) for (let x = fx(-faceHW(0.42) * 0.9); x <= fx(faceHW(0.42) * 0.9); x++) px(x, fy(0.42), x > nx ? sk[3] : dark(C.skin, 0.7));
+  if (C.tusks) for (const s of [-1, 1]) { px(nx + s * 2, my - 1, '#E8E0C8'); px(nx + s * 2, my - 2, s > 0 ? '#B8B098' : '#E8E0C8'); }
+  if (C.hairStyle === 'horns') for (const k of [-0.5, 0, 0.5]) { const x = fx(k * R), y0 = fy(0.02); px(x, y0 - 1, '#D8D0B8'); px(x, y0, '#B8B098'); }
+  if (C.hairStyle === 'trooper') { const hm = ramp('#E4E8EC'), gr = ramp('#9AA0A6');
+    fill((u, v) => { const t = tOf(v); if (t > 1.04) return null;
+      const hw = t <= 0.5 ? shellHW(t, 0.10, 0.10) : Math.max(faceHW(Math.min(t, 1)), R * 0.72) + R * 0.08; if (hw < 0 || Math.abs(u) > hw) return null;
+      if (t > 0.40 && t < 0.53 && Math.abs(u) < hw * 0.88) return (t < 0.46 && (u < -R * 0.45 || (u > -R * 0.05 && u < R * 0.1))) ? '#3A4A5A' : '#1A1E24';  // visor + glints
+      if (t > 0.64 && t < 0.94 && Math.abs(u) < R * 0.34) return Math.abs(u) > R * 0.22 && t > 0.72 ? '#4A5058' : (u > 0 ? gr[2] : gr[1]);  // breather + vents
+      if (t < 0.28 && Math.abs(u) < R * 0.10) return '#8A929C';                    // crest ridge
+      return u > R * 0.45 ? hm[2] : (u < -R * 0.4 && t < 0.6 ? hm[0] : hm[1]); }); }
+
+  // 8. clothing details
+  const cy = Y(P.shTop);
+  if (C.collar === 'open') { for (let k = 0; k < 4; k++) { px(nx - 1, cy + k, C.under); px(nx, cy + k, C.under); px(nx + 1, cy + k, dark(C.under, 0.8)); }
+    for (let k = 0; k < 3; k++) { px(nx - 2 - k, cy + k, cl[0]); px(nx + 2 + k, cy + k, cl[3]); } }
+  if (C.collar === 'high') { for (let x = X(-P.neck * 1.3); x <= X(P.neck * 1.3); x++) { px(x, cy - 1, dark(C.cloth, 0.75)); px(x, cy, dark(C.cloth, 0.8)); } }
+  if (C.collar === 'field') { for (let k = 0; k < 3; k++) { px(nx - 2 - k, cy + k, cl[2]); px(nx + 2 + k, cy + k, cl[3]); } }
+  if (C.collar === 'crimson') { for (let x = X(-P.neck * 1.6); x <= X(P.neck * 1.6); x++) { px(x, cy, '#B0202A'); px(x, cy + 1, '#8A1820'); } }
+  if (C.collar === 'scarf') { const sc = ramp(C.scarf || '#7A3AA8'); fill((u, v) => { const du = u / (P.neck * 2.4), dv = (v - P.shTop - 0.02) / 0.05; return du*du + dv*dv <= 1 ? (u > 0.1 ? sc[2] : u < -0.15 ? sc[0] : sc[1]) : null; }); }
+  if (C.collar === 'harness') { for (let y = cy + 1; y < H; y++) { px(X(-0.32), y, C.under); px(X(0.32), y, dark(C.under, 0.8)); } for (let x = X(-0.32); x <= X(0.32); x++) px(x, cy + 3, C.under); px(nx, cy + 4, '#5FD4FF'); }
+  if (C.pin) { px(X(-0.55), cy + 3, C.pin); px(X(-0.55) + 1, cy + 3, C.pin); }
+  if (C.rank) { px(X(-0.62), cy + 3, '#C03030'); px(X(-0.62) + 1, cy + 3, '#3060C0'); px(X(-0.62) + 2, cy + 3, '#C8C8C8'); }
+  if (C.cyl) { for (let k = 0; k < 3; k++) px(X(-0.60) + k, cy + 3, '#C8C8C8'); for (let k = 0; k < 3; k++) px(X(-0.60) + k, cy + 4, '#3060C0'); }
+  if (C.collar === 'sash') { const sa = ramp('#C8A040'); for (let y = cy; y < H; y++) { px(nx - 1, y, sa[0]); px(nx, y, sa[1]); px(nx + 1, y, sa[2]); } }
+  if (C.collar === 'armorRed') { for (let x = X(-0.95); x <= X(0.95); x++) px(x, cy + 2, '#B0202A'); const ap = ramp('#3A3A40');
+    for (const s of [-1, 1]) for (let y = cy + 3; y < H; y++) for (let x = X(s * 0.62); x !== X(s * 0.98) + s; x += s) px(x, y, s > 0 ? ap[2] : ap[1]); }
+  if (C.collar === 'plate') { for (let x = X(-0.75); x <= X(0.75); x++) px(x, cy + 2, '#4A5058'); px(X(-0.6), cy + 4, '#C03030'); px(X(-0.6) + 1, cy + 4, '#C03030'); }
+
+  // 9. selective outline: each outside edge pixel takes a dark shade of what it borders
+  const o = g.map(r => r.slice());
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    if (g[y][x]) continue;
+    for (const [a, b] of [[1,0],[-1,0],[0,1],[0,-1]]) { const n = g[y+b] && g[y+b][x+a]; if (n) { o[y][x] = dark(n, 0.35); break; } }
+  }
+  g = o;
+}
+
+// Firmware export (#export): renders the 12 commanders (faction order, 3
+// each) at classicW and prints commander_art.cpp -- a palette per portrait
+// plus one byte per pixel (0 = transparent). Run headless:
+//   msedge --headless=new --dump-dom "file:///.../portraits_v2.html#export"
+// and save the <pre> text as ShadowFleet_Prototype_02/commander_art.cpp.
+const EXPORT_ORDER = ['marr','danto','ilsa','kess', 'thane','vell','stahl','merrow', 'rhel','vosk','nyra','oxa', 'korrik','ymra','brakk','kaan'];  // 3.1-dev.6: character id order (faction * 4 + class)
+const EXPORT = location.hash === '#export';
+if (EXPORT) {
+  let out = '// GENERATED by tools/art/portraits_v2.html#export -- do not edit by hand.\n' +
+            '// Re-export after changing a face (see tools/art/README.md).\n#include "commander_art.h"\n\n';
+  const rows = [];
+  EXPORT_ORDER.forEach((name, i) => {
+    render(name, 'classicW');
+    const pal = [0], idx = [];
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const c = g[y][x]; if (!c) { idx.push(0); continue; }
+      const v = parseInt(c.slice(1), 16) || 0x010101; let k = pal.indexOf(v);  /* 3.1-dev.39: pure black would match index 0 (= transparent) -- Sereth Kaan's dark hair shade vanished */ if (k < 0) { k = pal.length; pal.push(v); } idx.push(k);
+    }
+    out += '// ' + name + '\nstatic const uint32_t P' + i + '[' + pal.length + '] = {' + pal.map(v => '0x' + v.toString(16).padStart(6, '0')).join(',') + '};\n';
+    out += 'static const uint8_t X' + i + '[' + idx.length + '] = {';
+    for (let k = 0; k < idx.length; k++) out += (k % W === 0 ? '\n  ' : '') + idx[k] + ',';
+    out += '\n};\n';
+    rows.push('  { ' + pal.length + ', P' + i + ', X' + i + ' },  // ' + name);
+  });
+  out += '\nconst CommanderArt COMMANDER_ART[NUM_COMMANDERS] = {\n' + rows.join('\n') + '\n};\n';
+  document.body.innerHTML = '<pre id="out"></pre>';
+  document.getElementById('out').textContent = out;
+}
+const [who, preset, style, fx2, expr] = (EXPORT ? 'ilsa:classicW' : (location.hash.slice(1) || 'ilsa:classicW')).split(':');
+if (expr === 'sly') Object.assign(PEOPLE[who], { smirk: true, grin: false, browArch: true });
+// Path outfits (UI 3.1 proposal): leaning = one accessory in the faction's colors;
+// Family = the whole outfit in the faction's colors + that accessory.
+const PATH = {
+  rebel:  { lean: { pin:'#FFC933' },                       fam: { cloth:'#C8762A', collar:'open', under:'#E8E0D0', pin:'#FFC933' } },
+  empire: { lean: { rank:true },                           fam: { cloth:'#5E6874', collar:'high', rank:true } },
+  pyke:   { lean: { stud:true },                           fam: { cloth:'#4A2A66', collar:'scarf', stud:true } },
+  dawn:   { lean: { earring:true, stripes:true },          fam: { cloth:'#5A0E14', collar:'crimson', stripes:true, earring:true } },
+};
+if (expr && expr.includes('_')) { const [f, st] = expr.split('_'); if (PATH[f]) Object.assign(PEOPLE[who], PATH[f][st]); }
+if (expr === 'grim') Object.assign(PEOPLE[who], { smirk: false, grin: false, browFlat: true, scar: true });
+render(who, preset || 'classicW', style || undefined);
+// Hologram (#name:preset::holo): what the firmware would do at draw time to the
+// same bitmap -- brightness (contrast-stretched per portrait) picks one of five
+// blues, scanlines are drawn on the scaled image (every 3rd screen row), finer
+// than the art grid -- one per art row chopped the faces up. No extra art.
+if (fx2 === 'holo') {
+  const HOLO = ['#0B2C3C', '#17607A', '#2E9CBC', '#6FDCFA', '#D4F7FF'];
+  const lum = c => { const n = parseInt(c.slice(1), 16); return 0.30 * (n >> 16) + 0.59 * ((n >> 8) & 255) + 0.11 * (n & 255); };
+  let lo = 255, hi = 0; for (const r of g) for (const c of r) if (c) { const l = lum(c); lo = Math.min(lo, l); hi = Math.max(hi, l); }
+  g = g.map((r, y) => r.map(c => { if (!c) return c; let k = Math.round((lum(c) - lo) / Math.max(1, hi - lo) * 4); return HOLO[k]; }));
+}
+if (!EXPORT) {
+const S = Math.floor(168 / H), cv = document.getElementById('c');
+cv.width = W * S; cv.height = H * S;
+const ctx = cv.getContext('2d');
+for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (g[y][x]) { ctx.fillStyle = g[y][x]; ctx.fillRect(x * S, y * S, S, S); }
+if (fx2 === 'holo') { ctx.globalCompositeOperation = 'source-atop'; ctx.fillStyle = 'rgba(3,8,13,0.45)'; for (let y = 0; y < cv.height; y += 3) ctx.fillRect(0, y, cv.width, 1); }
+}
+</script></body></html>

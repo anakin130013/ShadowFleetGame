@@ -1,0 +1,126 @@
+# REBEL ALLIANCE -- earnest, a little desperate, hopeful underneath.
+# Spoken by whichever Rebel commander isn't yours (Ilsa / Marr / Kess).
+# Format: <cause>: <line>     {planet} = the planet's name.
+# Causes: took (you took their planet), betray (you attacked them while on
+# good terms), rival (you took an Empire world), paid (you bought one of their
+# planets), deal (a negotiated deal with them), walkout (you left their
+# negotiation), kept (you kept a promise to them), broke (you broke one).
+
+took: {planet} was sheltering our wounded. You'd better have a reason, Commander.
+took: We counted on {planet}. Now we count you among the people we watch.
+took: Every world you take from us is one less place to hide. You know that, right?
+took: {planet} fed three of our cells. Whatever you're planning there, they'll go hungry for it.
+took: We don't have the ships to take {planet} back. We do have long memories.
+took: Our people on {planet} were evacuated with nothing but the clothes they wore. Remember that.
+took: You hit {planet} hard. Harder than the Empire ever bothered to.
+took: We thought you were fighting the same war we are. {planet} says otherwise.
+took: The Alliance doesn't hold grudges, Commander. But it does keep a list.
+took: Losing {planet} hurts. Losing it to you hurts more.
+took: {planet} had a hospital, a school, and a landing pad. Now it has your flag.
+took: You could have asked for {planet}. We might have said yes.
+
+betray: We trusted you with our routes, our codes, our people. And you hit {planet}.
+betray: There's a word for allies who turn their guns on {planet}. We'd rather not use it.
+betray: We stood beside you. You stood on {planet}. That's the difference between us.
+betray: After everything, {planet}? We're pulling our people out of anything you touch.
+betray: Commander, the Alliance has been betrayed before. We survived it. We'll survive you.
+betray: You knew exactly who was on {planet}. That's what makes it unforgivable.
+betray: The Empire breaks promises because it can. Why did you?
+betray: We named a ship after you once. We're renaming it today.
+betray: Friends don't come in shooting, Commander. You've made yourself something else.
+betray: {planet} believed in you. So did we. That's over now.
+betray: We'll be telling this story for years. You won't like how it ends.
+betray: Every cell in the sector is being told what you did at {planet}. Every single one.
+
+rival: {planet} is out from under the Empire's boot. The Alliance owes you one.
+rival: The Imperial garrison on {planet} is gone. You have friends you haven't met yet.
+rival: We heard about {planet}. Half the base cheered. The other half started crying.
+rival: You hit the Empire where it hurts. Do it again and we'll fly with you.
+rival: {planet} is breathing free air for the first time in years. Thank you, Commander.
+rival: That's one less Star Destroyer's worth of misery over {planet}. Well done.
+rival: The Empire will come back for {planet}. When it does, call us.
+rival: Our people on {planet} are already painting over the Imperial crest.
+rival: You did in one battle what we've been trying to do for a decade.
+rival: {planet} remembers who freed it. So will we.
+rival: Every victory over the Empire is a spark. {planet} just caught fire.
+rival: Somewhere on {planet}, a kid just saw their first sky without a TIE fighter in it.
+
+paid: Credits on the table for {planet}. Not how we'd do it, but the people there eat tonight.
+paid: You bought {planet} instead of burning it. We noticed, Commander.
+paid: Money isn't our language, but we understand this one. {planet} is in fair hands.
+paid: The credits for {planet} will buy medicine for three systems. You did good today.
+paid: Paying for {planet} instead of taking it? Maybe you're one of the good ones.
+paid: We'll put your credits to work. Every one of them.
+paid: {planet} changed hands and nobody died. That's a better day than most.
+paid: We could have fought you for {planet}. We're glad we didn't have to.
+paid: It's rare to meet someone who pays what they owe. Rarer still out here.
+paid: The Alliance runs on scraps. You just handed us a feast. Thank you.
+paid: {planet} is yours, fair and square. Look after its people.
+paid: Your payment for {planet} cleared. Our quartermaster actually smiled.
+
+deal: A handshake over {planet} and nobody died. More of that, please.
+deal: You came to talk instead of shoot. That's how wars end, Commander.
+deal: The deal on {planet} holds as long as we both do. We intend to.
+deal: Our envoy says you listened. That's more than most people manage.
+deal: {planet} is safer tonight because of what you agreed to. We won't forget it.
+deal: We don't have much to bargain with. You treated us like we did anyway.
+deal: Terms accepted on {planet}. Our pilots will stand down.
+deal: A deal is a promise with paperwork. We keep our promises.
+deal: Talking with you about {planet} gave us hope. Don't make us regret it.
+deal: You could have taken {planet} by force. Choosing not to says something.
+deal: The Alliance stands by the {planet} agreement. Stand by it too.
+deal: Diplomacy is slow and thankless. Thank you for doing it anyway.
+
+walkout: You walked away from the envoys on {planet}. They waited three days for that meeting.
+walkout: We came to {planet} with open hands. You left them empty.
+walkout: Our negotiator flew through an Imperial blockade to reach {planet}. You didn't even stay.
+walkout: Walking out sends a message, Commander. We received it.
+walkout: {planet} was ready to trust you. Now it isn't.
+walkout: We don't have time to waste. You just wasted some anyway.
+walkout: If you won't talk to us about {planet}, who will you talk to?
+walkout: The table on {planet} is still set. We won't be waiting at it.
+walkout: We've been stood up by better and worse than you. We remember all of them.
+walkout: Our envoy came back from {planet} with nothing but your empty chair.
+walkout: You'll want something from us one day. Remember this moment when you do.
+walkout: Leaving mid-talks is how the Empire negotiates. Is that the company you want to keep?
+
+kept: You kept your word. Out here, that's rarer than a working hyperdrive.
+kept: Promise kept. The Alliance remembers who shows up.
+kept: You said you'd do it and you did. That's all we've ever asked of anyone.
+kept: Our people were watching to see if you'd follow through. You did.
+kept: Trust is the only currency we really have. You just earned a lot of it.
+kept: Thank you, Commander. You made a believer out of a few skeptics today.
+kept: Word is getting around that you can be counted on. We're helping it along.
+kept: A kept promise is worth more than a fleet to us. Truly.
+kept: You held up your end. We'll hold up ours, whatever it costs.
+kept: The cells near {planet} are calling you a friend now. Don't make them wrong.
+kept: Most people forget their promises the moment they're out of sight. You didn't.
+kept: Mark this day, Commander. The Alliance owes you.
+
+broke: We told our people you could be trusted. Now we have to tell them we were wrong.
+broke: You broke your word to the Alliance. We'll be more careful with ours.
+broke: A promise to us is a promise to everyone hiding behind us. You broke all of them.
+broke: We don't have many friends. We have one fewer now.
+broke: Promises are cheap until you're the one depending on them. We were depending on you.
+broke: We waited for you to deliver. People got hurt while we waited.
+broke: You'll have a hard time finding anyone in the Alliance who'll shake your hand now.
+broke: The Empire lies to us every day. We expected better from you.
+broke: It's not the broken promise that stings, Commander. It's that we believed it.
+broke: Our pilots were counting on you. Some of them aren't coming home.
+broke: Next time you make the Alliance a promise, we'll want it in writing. And collateral.
+broke: Disappointing doesn't begin to cover it.
+
+@DAGOBAH: Dagobah hides more than swamp. Whatever you find there, don't sell it.
+@DAGOBAH: The swamps of Dagobah have kept our secrets for years. Ask them nicely.
+@HOTH: Hoth was cold, miserable, and ours. Look after it better than we could.
+@HOTH: Every tunnel on Hoth was dug by hand. Remember that before you fill them with your troops.
+@TATOOINE: Tatooine's moisture farmers have hidden our pilots for years. Treat them kindly.
+@TATOOINE: Two suns, no water, and the best pilots in the galaxy. Don't waste Tatooine.
+@ENDOR: Endor's forests have eyes, Commander. Friendly ones, if you let them be.
+@NABOO: Naboo's people chose peace when nobody else would. Honor that.
+
+# 3.1-dev.49 courted -- you won / bought a world from OUR RIVAL by talks or Credits (we grumble)
+courted: You shook hands with the Empire over {planet}. We noticed whose hand it was.
+courted: {planet} went to you by Imperial signature. The Alliance remembers who signs with the Empire.
+courted: Buying peace from the Empire on {planet}? Peace bought from them never stays bought.
+courted: We hoped you would free {planet}, not bargain the Empire out of it.

@@ -1,0 +1,122 @@
+# CRIMSON DAWN -- silky, polite menace. Gracious words, a knife behind them.
+# Spoken by whichever Crimson Dawn commander isn't yours (Kaan / Ymra Vash /
+# Brakk -- Brakk's lines would be shorter; that's a later commander pass).
+
+took: How bold, taking {planet}. I do so admire boldness. Briefly.
+took: {planet} was a gift we hadn't finished wrapping. Pity.
+took: You've taken {planet}. We'll be sending a gift. Do open it carefully.
+took: {planet} looks lovely with your banners on it. They'll look lovely coming down, too.
+took: Such ambition. {planet} has always attracted the ambitious. It rarely keeps them.
+took: We were fond of {planet}. We're becoming fond of you. Neither feeling lasts long.
+took: Do enjoy {planet}. We've had people enjoy it before. Ask them how it went. Oh, you can't.
+took: A charming move on {planet}. We'll be sure to return the charm.
+took: You took {planet} without asking. Manners matter, Commander. We'll teach you some.
+took: {planet} was ours by every measure that counts. Yours by the one that doesn't.
+took: How thoughtful of you to look after {planet} for us. We'll be by to collect it.
+took: We've added {planet} to the list of things you'll give back. It's getting long.
+
+betray: We poured you wine. You poured it on the floor. {planet} will be remembered as the night you did.
+betray: Betrayal is an art, Commander. You've done it badly. We'll show you how it's done well.
+betray: We trusted you with {planet}. That was our mistake. The rest will be yours.
+betray: You smiled at us at dinner and struck {planet} by dessert. We're almost impressed.
+betray: Crimson Dawn forgives many things. We have simply never forgiven this one.
+betray: Every friend you have in the underworld just received a letter from us. A long one.
+betray: You've broken bread with us and then broken {planet}. How rude.
+betray: We kept a seat for you at our table. We're having it removed.
+betray: Our friendship had such potential. Now it has a purpose.
+betray: Treachery on {planet}. We'll hold a small memorial for the trust we had in you.
+betray: We don't shout, Commander. We don't threaten. We simply begin.
+betray: There's a particular silence that follows a betrayal. Listen to it. It's ours.
+
+rival: The Pykes lost {planet}? How dreadful. Do send them our condolences.
+rival: You've taken {planet} from the Pykes. We'd like to thank you properly. In person, perhaps.
+rival: The Syndicate is short one world. What a lovely thing to wake up to.
+rival: {planet} is free of those tedious Pykes. You have exquisite taste in targets.
+rival: We heard about {planet}. We opened something very old and very expensive in your honor.
+rival: The Pykes will be counting their losses for weeks. We'll be counting our blessings.
+rival: How generous of you to clear {planet} for us. We'll remember the kindness.
+rival: A Pyke world, fallen. Crimson Dawn sends its warmest regards and a modest gift.
+rival: Do tell the Pykes on {planet} we said hello. Oh, they're gone? Even better.
+rival: Every Pyke accountant on {planet} is weeping into a ledger. Delightful.
+rival: You may find Crimson Dawn's doors open wider now. Do come in.
+rival: The enemy of our enemy is a guest at our table. Sit, Commander. Eat.
+
+paid: You paid for {planet} without haggling. Either you're generous or foolish. We'll find out which.
+paid: Such refined manners, paying for {planet}. We had almost forgotten what that looked like.
+paid: The credits for {planet} have arrived. So, darling, have you.
+paid: A purchase, not a conquest. You're learning how civilized people take things.
+paid: {planet} is yours. We'll keep the receipt somewhere very safe.
+paid: Payment received. Crimson Dawn always remembers who pays, and how promptly.
+paid: How elegant. {planet} changed hands and not a single glass was broken.
+paid: You've bought {planet}. You've also bought our attention. That one has no refunds.
+paid: Clean credits, clean hands, clean conscience. Two out of three is admirable.
+paid: We do appreciate a buyer who doesn't make us ask twice.
+paid: {planet} has a new owner and a new admirer. We'll be watching both.
+paid: A pleasure doing business. We say that to very few people and mean it to fewer.
+
+deal: A charming arrangement on {planet}. Crimson Dawn keeps its friends close.
+deal: We have an understanding on {planet}. Understandings are so much nicer than contracts.
+deal: The terms for {planet} are agreed. We'll be such good friends, you and I.
+deal: You negotiate beautifully. It's almost a shame we have to trust you now.
+deal: {planet} is settled. Let's drink to it. You first.
+deal: An agreement on {planet}. We'll be watching it with a great deal of affection.
+deal: We like people who talk before they shoot. They live long enough to be interesting.
+deal: Our word on {planet} is good. We trust yours will be too. For everyone's sake.
+deal: Done. Sealed. Toasted. Crimson Dawn is delighted, and delight is rare for us.
+deal: This could be the beginning of something lovely. Don't spoil it.
+deal: Our envoy says you were gracious. We do reward grace.
+deal: An arrangement on {planet}. Do keep your side of it. We always know when people don't.
+
+walkout: Leaving in the middle of our talk about {planet}? We'll finish it later. We always do.
+walkout: You left the table on {planet}. We'll keep your chair warm. We'll keep everything warm.
+walkout: How abrupt. We had dessert prepared.
+walkout: Walking out on Crimson Dawn is such a memorable thing to do. We'll remember it.
+walkout: The conversation about {planet} isn't over. It has simply moved somewhere you can't see.
+walkout: You've left us with so much unsaid. We'll find a way to say it.
+walkout: Our envoy on {planet} was quite hurt. She doesn't get hurt. She gets thoughtful.
+walkout: A pity. We had such generous terms. Now we have such patient ones.
+walkout: You may leave the room, Commander. You may not leave the conversation.
+walkout: We'll consider your departure from {planet} a pause. A long, uncomfortable pause.
+walkout: Rudeness is so expensive these days. We'll send you the bill.
+walkout: You didn't even finish your drink. We'll save it for next time. There's always a next time.
+
+kept: You kept your promise. How refreshing. We'll remember it fondly.
+kept: A promise kept. Crimson Dawn is pleasantly surprised, which happens less than you'd think.
+kept: You did as you said. We'd almost forgotten people could do that.
+kept: Promise kept. Consider yourself a little safer this round. Only a little.
+kept: How lovely. You've earned a favor. We do so enjoy granting favors to the right people.
+kept: Our faith in you was well placed. We'll place a little more.
+kept: Kept, and kept gracefully. Crimson Dawn is charmed.
+kept: Reliability is the most attractive quality, Commander. You're becoming very attractive.
+kept: Your word held near {planet}. Our people there will treat you as one of our own.
+kept: You've been good to us. We are very good to those who are good to us.
+kept: A kept promise is the beginning of a beautiful friendship. Let's not end it early.
+kept: How delightful. Do keep surprising us this way.
+
+broke: A broken promise. Don't worry, Commander. We never stay angry. We get even.
+broke: You broke your word to Crimson Dawn. How brave. How very, very brave.
+broke: We'll treat your promise the way you did. As something pretty, briefly, before it shatters.
+broke: Disappointment is such an ugly feeling. We'd like to share some with you.
+broke: You've made a liar of yourself. We'll make sure everyone hears it beautifully told.
+broke: We don't hold grudges. We hold receipts.
+broke: Promise broken. Smile broken. Something else of yours will follow. We haven't decided what.
+broke: We're not angry, Commander. Anger is for people with fewer options.
+broke: Crimson Dawn always collects. We simply let you choose how gracefully.
+broke: Such a shame. We'd planned such nice things for you.
+broke: You'll find our people still smile at you. That's the part to worry about.
+broke: We offered you our trust and you returned it chipped. We'll return the favor.
+
+@DATHOMIR: Dathomir answers to us. It will again.
+@DATHOMIR: The witches of Dathomir owe us a great deal. Now, it seems, so do you.
+@CORUSCANT: All those lights on Coruscant, and every one of them owes someone. Most of them owe us.
+@CORUSCANT: Coruscant's lower levels are ours, darling. You've merely bought the penthouse.
+@KIJIMI: Kijimi's thieves send their regards. They also sent us your access codes.
+@KESSEL: Kessel's spice tastes sweeter when the Pykes don't have it. Thank you, truly.
+@HOTH: Hoth? How rustic. We'll send blankets. Monogrammed.
+@NABOO: Naboo is so beautiful. We do hate to see beautiful things get hurt.
+
+# 3.1-dev.49 courted -- you won / bought a world from OUR RIVAL by talks or Credits (we grumble)
+courted: You bought {planet} from the Pykes. How thrifty. How disappointing.
+courted: Such a cozy arrangement with the Pykes over {planet}. We do love hearing about cozy arrangements.
+courted: The Pykes are telling everyone about their deal on {planet}. They never could keep a secret.
+courted: We noticed the Pykes smiling about {planet}. We would rather they didn't.

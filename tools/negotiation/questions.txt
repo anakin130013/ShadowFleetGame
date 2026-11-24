@@ -1,0 +1,618 @@
+# Shadow Fleet negotiation question bank (draft v2, 2026-10-19, 96 questions) -- the source the
+# v0.30 conversation will be generated from, like tools/transmissions/*.txt.
+#
+# RULES (user 2026-10-19): a question never names or hints at a faction -- any of
+# them could ask it. Replies carry VALUES, never faction names. Each reply lists
+# every faction's reaction: + they like it, - it offends them, 0 neutral. A faction
+# can ask a question only if one reply is a + for it. {planet} = the planet's name.
+# Tiers: EASY (values show plainly), MEDIUM (subtler), HARD (all replies sound fine).
+# Factions: R Rebels, E Empire, P Pykes, C Crimson Dawn.
+#
+# Format:  Q <TIER> | question
+#          A reply | R E P C        (each + - or 0)
+
+Q EASY | Why should we trust you with this world?
+A Because I'll put its people first. | + - - 0
+A Because I'll keep order here. Every rule, every day. | - + 0 0
+A Because I pay what I owe, and I never talk about it. | 0 0 + +
+
+Q EASY | What do you bring to the table?
+A Credits. Steady ones. | - 0 + 0
+A Ships, discipline, and officers who follow orders. | 0 + 0 -
+A Friends in quiet places, and my discretion. | 0 0 0 +
+
+Q EASY | Someone in this port talks too much about you. What should be done?
+A Find out what he knows, then make sure he never works here again. | - 0 + 0
+A Let him talk. People have a right to speak. | + - - -
+A Speak with him privately. Politely, once. | 0 0 0 +
+
+Q EASY | How do you deal with people who break the rules?
+A Quickly and publicly, so no one tries it twice. | - + 0 -
+A I ask why first. Most have a reason. | + - 0 0
+A I send them the bill. | 0 0 + 0
+
+Q EASY | A gift is customary here. What did you bring?
+A A name you'll find useful. And my silence. | 0 0 0 +
+A Medicine for the lower quarter. | + 0 - 0
+A Credits, of course. | 0 0 + 0
+
+Q EASY | What happens to {planet} if you leave?
+A Nothing. I'll leave it in order, with someone in charge. | 0 + 0 0
+A Its people will be better off than when I came. | + 0 - 0
+A Whatever I owe here will be paid before I go. | 0 0 + 0
+
+Q MEDIUM | What do you want from {planet}?
+A A safe harbor, for anyone who needs one. | + - 0 0
+A Something no one else has noticed yet. | 0 0 0 +
+A Its trade routes. Everything else is negotiable. | - 0 + 0
+
+Q MEDIUM | Our people are tired. What do I tell them about you?
+A That they won't have to face this alone anymore. | + 0 0 0
+A That the hard times end the day I arrive. Schedules will be kept. | 0 + 0 -
+A Nothing. They'll see soon enough. | - 0 0 +
+
+Q MEDIUM | You came alone. Brave, or foolish?
+A Careful. I don't bring people who talk. | 0 0 + +
+A Neither. My orders were to come alone. | 0 + 0 0
+A Hopeful. I'd rather talk than fight. | + - 0 0
+
+Q MEDIUM | Your record here has some problems. Explain.
+A Corrected. The one responsible has been replaced. | 0 + 0 0
+A Mistakes were made. I'd rather fix them than hide them. | + 0 0 -
+A Records can be bought. So can silence. | - - + 0
+
+Q MEDIUM | Our interests and yours may one day collide. What then?
+A Then I'll come to you first, quietly. | 0 0 0 +
+A Then we settle it at the price we agree today. | 0 0 + 0
+A Then the stronger side decides. | - + 0 -
+
+Q MEDIUM | What would you do with a prisoner who once fought against you?
+A Offer a second chance. People change. | + - 0 0
+A Send them where they can be useful, under supervision. | 0 + 0 0
+A Find out what they're worth, and to whom. | - 0 + 0
+
+Q HARD | A magistrate pardoned a smuggler. He says mercy keeps the peace. Your view?
+A Mercy is for those above him to grant. | - + 0 0
+A If the peace holds, the method matters less. | 0 0 + 0
+A He knows his people. Trust him. | + - 0 0
+
+Q HARD | A rival offered us a better price for this route. Why shouldn't we take it?
+A Because they'll be back next year asking for more. I won't. | 0 0 + 0
+A Because they'll talk about the deal. I won't. | 0 0 0 +
+A Because loyalty should mean something. | + 0 - 0
+
+Q HARD | We could take {planet} from you later. Why make an arrangement now?
+A Because you prefer things done gracefully. | 0 0 0 +
+A Because an arrangement costs less than a war. | 0 0 + 0
+A Because the people here have suffered enough. | + 0 0 0
+
+Q HARD | We're short of officers. Would you lend us yours?
+A Gladly. Under your command, by your rules. | 0 + 0 0
+A Any who volunteer. I won't order them to go. | + - 0 0
+A My people answer to me. | 0 - 0 0
+
+Q HARD | A storm took half your cargo. Who pays for it?
+A I do. My cargo, my loss. | 0 0 + 0
+A Whoever insured it. That's what contracts are for. | 0 + 0 0
+A We split it. We're in this together. | + 0 - 0
+
+Q HARD | An old friend of yours wants a seat at this table. Do we let him in?
+A Only if he can keep this conversation to himself. | 0 0 0 +
+A If he's useful. Friendship doesn't pay docking fees. | - 0 + 0
+A If he follows our rules while he's here. | 0 + 0 0
+
+Q HARD | The workers here want shorter shifts. Do we give in?
+A Yes. Tired people make mistakes. | + - 0 0
+A No. Output first, comfort after. | - + 0 0
+A Give them a little, quietly, before they ask loudly. | 0 0 0 +
+
+Q HARD | If you had to choose: a loyal fool, or a clever stranger?
+A The fool. Loyalty can't be bought later. | 0 0 - +
+A The stranger, on a short contract. | 0 0 + 0
+A Whoever the chain of command assigns. | - + 0 0
+
+# ---- added in draft v2 (2026-10-19): 76 more, 96 in all (24 easy, 30 medium, 42 hard) ----
+
+Q EASY | Why did you come to {planet}?
+A To help the people here stand on their own. | + - - 0
+A To bring this world under proper control. | - + 0 -
+A Business. Good business. | - 0 + 0
+
+Q EASY | How do you treat the people who work for you?
+A Like family. They come first. | + - - 0
+A Fairly, by the rules, with no exceptions. | 0 + 0 0
+A Well, and quietly. Loyalty is earned in private. | 0 0 0 +
+
+Q EASY | What do you do with someone who owes you?
+A Collect. With interest. | - 0 + -
+A Forgive it, if they're struggling. | + - - 0
+A Remind them gently. Once. | 0 0 0 +
+
+Q EASY | We've had trouble with violence in this port. Your answer?
+A More patrols, and a curfew. | - + 0 0
+A Find out what drives it, and fix that. | + 0 0 0
+A Violence is bad for business. I'll make it stop, quietly. | 0 0 + +
+
+Q EASY | What's the first thing you'd change here?
+A Free the people in the labor camps. | + - - 0
+A The schedules. Nothing here runs on time. | - + 0 0
+A The tariffs. They're bleeding everyone dry. | 0 - + 0
+
+Q EASY | Tell me about yourself.
+A I'd rather let my work speak for me. | 0 0 + +
+A I serve, and I follow orders. | 0 + 0 0
+A I stand up for people who can't stand up for themselves. | + - 0 0
+
+Q EASY | How do you settle a dispute?
+A By the book. The rules decide. | - + 0 0
+A Over a quiet dinner, between people who respect each other. | 0 0 0 +
+A By the contract. Whatever was signed. | 0 0 + 0
+
+Q EASY | What do you think of people who break their word?
+A They pay for it. Always. | 0 0 + 0
+A They no longer exist to me. | 0 0 0 +
+A Everyone deserves a second chance. | + - - -
+
+Q EASY | Your fleet is larger than ours. Should we be worried?
+A Only if you break the rules. | 0 + 0 0
+A No. We're here to protect, not to conquer. | + 0 0 0
+A Ships are expensive. I don't waste them. | 0 0 + 0
+
+Q EASY | What do you want in return?
+A Nothing. Just let the people here live freely. | + - - 0
+A A fair price, paid on time. | 0 0 + 0
+A Your friendship. It may be useful one day. | 0 0 0 +
+
+Q EASY | Do you follow orders, or give them?
+A Both. Everyone answers to someone. | 0 + 0 0
+A Neither. I ask people what they think. | + - 0 0
+A I make suggestions. People tend to follow them. | 0 0 0 +
+
+Q EASY | Why should we sell to you instead of someone else?
+A Because I pay on time, every time. | 0 0 + 0
+A Because I'll still be here next year, and the year after. | 0 + 0 0
+A Because I won't tell anyone what you sold. | 0 0 0 +
+
+Q EASY | Someone stole from you. What happens next?
+A They return it, or they pay for it. | 0 0 + 0
+A They face a magistrate. That's what courts are for. | - + 0 0
+A I find out why. Hungry people steal. | + - 0 0
+
+Q EASY | How do you feel about the people who run this world now?
+A They've lost control. Someone has to restore it. | - + 0 0
+A They've forgotten who they serve. | + 0 0 0
+A I'm sure they're doing their best. | 0 0 0 +
+
+Q EASY | If I helped you today, what would I get tomorrow?
+A My gratitude, and my help when you need it. | + 0 0 0
+A A share of whatever this world earns. | 0 0 + 0
+A A favor, to be called in whenever you like. | 0 0 0 +
+
+Q EASY | We don't usually deal with outsiders. Why should we start?
+A Because together we're stronger. | + 0 0 0
+A Because I bring an order you can't buy anywhere else. | 0 + 0 0
+A Because I'm the kind of outsider who keeps secrets. | 0 0 + +
+
+Q EASY | What kind of leader are you?
+A One who listens. | + - 0 0
+A One who is obeyed. | - + 0 -
+A One you won't hear about. | 0 0 + +
+
+Q EASY | The last person who sat in that chair lied to us. Will you?
+A No. You'll always know where you stand with me. | + 0 0 0
+A Lying is inefficient. I won't. | 0 + 0 0
+A I'll tell you what you need to know. | 0 0 0 +
+
+Q MEDIUM | A family here can't pay their docking fees. What do we do?
+A Let them stay. We'll cover it. | + - - 0
+A They knew the terms. They leave. | - + + 0
+A Find them work. A debt can be paid in many ways. | 0 0 0 +
+
+Q MEDIUM | We have two buyers for the same shipment. Who gets it?
+A Whoever paid first. | 0 + + 0
+A Whoever needs it more. | + - - 0
+A Whoever we'll need again. | 0 0 0 +
+
+Q MEDIUM | Our last partner kept us waiting. Will you?
+A Never. My schedule is my word. | 0 + 0 0
+A Only if something more important comes up. People, usually. | + 0 - 0
+A I'll be early, and I'll come alone. | 0 0 + +
+
+Q MEDIUM | There's a celebration tonight. Will you come?
+A Gladly. It's good to see people happy. | + 0 0 0
+A I'll come, and I'll be gone before anyone notices. | 0 0 0 +
+A Only if there's business to discuss. | 0 0 + 0
+
+Q MEDIUM | We've heard you have powerful enemies. Should that worry us?
+A My enemies are the enemies of order. | 0 + 0 -
+A Everyone worth knowing has enemies. Mine stay polite. | 0 0 0 +
+A They worry me more than they'll ever worry you. | + 0 0 0
+
+Q MEDIUM | How much is {planet} worth to you?
+A More than you'd believe. That's why I'm careful with it. | 0 0 0 +
+A Exactly what the numbers say. No more. | 0 0 + 0
+A It's not about worth. People live here. | + - - 0
+
+Q MEDIUM | A ship arrived with no papers. What should we do with it?
+A Impound it until someone explains. | - + 0 0
+A Ask what's in the hold, and what it's worth. | 0 0 + 0
+A Ask if anyone aboard needs help. | + 0 0 0
+
+Q MEDIUM | We'd like your promise in writing. Is that a problem?
+A Of course not. Write it all down. | 0 + 0 -
+A My word should be enough. | + 0 0 0
+A Write it down, then burn it once we've both read it. | 0 0 + +
+
+Q MEDIUM | Who do you answer to?
+A My superiors. As it should be. | 0 + 0 0
+A The people I serve. | + - 0 0
+A That is a very personal question. | 0 0 0 +
+
+Q MEDIUM | Would you share your profits with the workers here?
+A Yes. They earned it. | + - - 0
+A They're paid what was agreed. | 0 + + 0
+A Some. A grateful worker is a loyal one. | 0 0 0 +
+
+Q MEDIUM | We hear you were generous to your last partner. Why?
+A Generosity buys loyalty. Loyalty is priceless. | 0 0 0 +
+A Because it was the right thing to do. | + 0 - 0
+A Because it saved me money later. | 0 0 + 0
+
+Q MEDIUM | What would you do if a neighbor threatened us?
+A Show them, firmly, where the line is. | 0 + 0 0
+A Stand with you, whatever it takes. | + 0 0 0
+A Make sure they find a better use for their time. | 0 0 + +
+
+Q MEDIUM | How do you choose your friends?
+A Carefully, and for life. | 0 0 0 +
+A By what they do, not what they say. | + + 0 0
+A Friends are a cost. I keep the useful ones. | - 0 + -
+
+Q MEDIUM | Our young people want to leave this world. Should we let them?
+A Yes. Everyone deserves to choose their own path. | + - 0 0
+A Only with permission, and a purpose. | 0 + 0 0
+A Let them go, and make sure they remember where they're from. | 0 0 0 +
+
+Q MEDIUM | We can't pay you right now. Does that end this?
+A No. Pay me when you can. | + 0 - 0
+A Then we write a schedule, and you keep it. | 0 + + 0
+A Not at all. I can wait. I'm very patient. | 0 0 0 +
+
+Q MEDIUM | Someone on your crew was rude to our people. Will you fix it?
+A He'll apologize, in person. | + 0 0 +
+A He'll be disciplined, by the book. | 0 + 0 0
+A He'll pay for the trouble he caused. | 0 0 + 0
+
+Q MEDIUM | What do you think of this world's old traditions?
+A They hold people together. Keep them. | + 0 0 +
+A Useful, as long as they don't get in the way. | 0 + 0 0
+A Traditions don't pay the bills. | 0 - + -
+
+Q MEDIUM | If we turned you down today, what would you do?
+A Come back tomorrow with a better offer. | 0 0 + 0
+A Respect your answer. And remember it. | 0 0 0 +
+A Ask what I got wrong, and try to fix it. | + - 0 0
+
+Q MEDIUM | Our security chief says you can't be trusted. What do you say to that?
+A She's right to be careful. I'd be too. | + 0 0 0
+A Show her my credentials. They're in order. | 0 + 0 0
+A I'd like to meet her. Privately. | 0 0 + +
+
+Q MEDIUM | A fire destroyed half the market. Where do we start?
+A With the families who lost everything. | + 0 - 0
+A With a plan, a timeline, and someone in charge. | 0 + 0 0
+A With the merchants. Trade brings everything else back. | 0 0 + 0
+
+Q MEDIUM | What will you do with the old guard here?
+A Keep the ones who follow the rules. Replace the rest. | 0 + 0 0
+A Give them a place at the table. They know things. | 0 0 0 +
+A Let the people decide. | + - 0 0
+
+Q MEDIUM | Why do you want to talk instead of fight?
+A Because fighting hurts the people I'm trying to help. | + 0 0 0
+A Because war is bad for business. | 0 0 + 0
+A Because I'd rather win without anyone noticing. | 0 0 0 +
+
+Q MEDIUM | What's your opinion of the law?
+A It's what keeps us from chaos. | 0 + - 0
+A It's a tool. Some laws protect people, some don't. | + 0 0 0
+A It has a price, like everything else. | - - + 0
+
+Q MEDIUM | We're told you never forget a slight. Is that true?
+A I never forget anything. Including kindness. | 0 0 0 +
+A I keep records. Of everything. | 0 + + 0
+A I try to forgive. It's not always easy. | + 0 0 -
+
+Q HARD | A clerk found an error in our accounts. In our favor. What now?
+A Report it. Accounts must be right. | 0 + 0 0
+A Keep quiet, and keep the difference. | - - + 0
+A Tell the person it hurts, privately. | + 0 0 +
+
+Q HARD | A guard took a bribe to look away. He fed his family with it. Your judgment?
+A He broke his oath. That has to mean something. | 0 + 0 +
+A Pay him better, and he won't need to. | + 0 0 0
+A Find out who paid him, and why. | 0 0 + 0
+
+Q HARD | We could finish the bridge in half the time if we worked through the night. Should we?
+A Yes. Deadlines exist for a reason. | - + 0 0
+A Only if the crews agree to it. | + 0 0 0
+A Finish it on time, and quietly pay the crews extra. | 0 0 + +
+
+Q HARD | A merchant wants to sell us weapons. No questions asked. Do we buy?
+A Only with the proper permits. | 0 + 0 0
+A If the price is right. | 0 0 + 0
+A Ask what they were used for before. | + 0 0 0
+
+Q HARD | An old enemy of ours is asking for shelter. Do we give it?
+A Yes. Today's enemy can be tomorrow's friend. | + 0 0 0
+A Yes, and let him know what he owes us. | 0 0 + +
+A Only if he submits to our laws. | 0 + 0 0
+
+Q HARD | Two of our captains are feuding. How should we settle it?
+A Promote one. Reassign the other. | 0 + 0 0
+A Sit them down and make them talk it out. | + 0 0 0
+A Settle it out of sight, before anyone else hears. | 0 0 + +
+
+Q HARD | We found credits hidden in an abandoned ship. Whose are they?
+A Whoever can prove they're theirs. | 0 + 0 0
+A Ours, now. | - 0 + 0
+A Use them for the people who lost the most here. | + 0 - 0
+
+Q HARD | Our best pilot wants to leave and fly for someone else. Let her?
+A Yes. She's earned the right to choose. | + - 0 0
+A She signed a contract. She finishes it. | 0 + + 0
+A Let her go, and stay on good terms. She'll remember. | 0 0 0 +
+
+Q HARD | Should we tell the people the truth about the shortages?
+A Yes. They deserve to know. | + - 0 0
+A Tell them whatever keeps them calm. | 0 + 0 +
+A Tell them prices are going up. | 0 0 + 0
+
+Q HARD | A stranger offered us a gift. No conditions. Accept it?
+A Nothing is free. Ask the price first. | 0 0 + 0
+A Accept it graciously. And find out who sent it. | 0 0 0 +
+A Log it, report it, then decide. | 0 + 0 0
+
+Q HARD | An informant wants protection in exchange for names. Do we deal?
+A Yes, through official channels. | 0 + 0 0
+A Yes. Names are worth more than credits. | 0 0 + +
+A Only if no one gets hurt because of it. | + 0 0 0
+
+Q HARD | Our harvest failed. Do we raise prices, or ration?
+A Ration. Everyone gets the same. | + + 0 0
+A Raise prices. It's what the market says. | - 0 + 0
+A Ration in public, and quietly supply our friends. | 0 0 0 +
+
+Q HARD | A rival commander sent a message: "Let's not fight." Your answer?
+A Agree, and send a gift back. | 0 0 0 +
+A Agree, for a price. | 0 0 + 0
+A Agree. Nobody needs another war. | + 0 0 0
+
+Q HARD | Should our soldiers wear uniforms, or blend in?
+A Uniforms. People should know who keeps the peace. | 0 + 0 -
+A Blend in. Fewer questions. | 0 0 + +
+A Whatever keeps them and the people safest. | + 0 0 0
+
+Q HARD | One of our elders keeps insulting your crew. What will you do?
+A Nothing. An elder has earned some patience. | + 0 0 +
+A Remind him, firmly, who's in charge now. | 0 + 0 -
+A Ask what it would cost to make him stop. | 0 0 + 0
+
+Q HARD | We need new engines. Fast and cheap, or slow and reliable?
+A Reliable. Broken engines cost more. | 0 + + 0
+A Fast. People are waiting. | + 0 0 0
+A Whichever the people who matter would prefer. | 0 0 0 +
+
+Q HARD | A writer wants to tell the story of our arrangement. Allow it?
+A Yes. People should know what we're doing. | + - - -
+A Only after it's been reviewed. | 0 + 0 0
+A Invite her to dinner first, and pay for it. | 0 0 + +
+
+Q HARD | How do you know when to stop negotiating and start fighting?
+A When the other side stops respecting the terms. | 0 + + 0
+A When people's lives are at stake. | + 0 0 0
+A I never stop negotiating. Fighting is a failure of manners. | 0 0 0 +
+
+Q HARD | Your people found old weapons hidden here. Turn them in, or keep them?
+A Turn them in. Weapons need oversight. | 0 + 0 0
+A Keep them. The people here may need to defend themselves. | + - 0 0
+A Sell them, far from here. | 0 0 + 0
+
+Q HARD | A child stowed away on your ship. What do you do?
+A Find her family, whatever it takes. | + 0 0 0
+A Return her to the port authority. | 0 + 0 0
+A Find out who she is first. It may matter. | 0 0 + +
+
+Q HARD | Do you want to be loved here, or feared?
+A Neither. Respected. | 0 0 0 +
+A Feared is more reliable. | 0 + 0 0
+A Trusted. That takes longer. | + 0 0 0
+
+Q HARD | We'd like a partnership, but only in secret. Can you keep it?
+A Of course. I keep everything. | 0 0 + +
+A Secrets come out. I'd rather be honest from the start. | + - 0 -
+A If it's in the agreement, I'll keep it. | 0 + 0 0
+
+Q HARD | Our mine is dangerous, but it's our only income. Keep it open?
+A Keep it open, with strict safety rules. | 0 + + 0
+A Close it until it's safe. We'll find another way. | + 0 - 0
+A Keep it open, and quietly look for a buyer. | 0 0 0 +
+
+Q HARD | What would you do with a traitor in your own ranks?
+A Make an example of him. | 0 + 0 0
+A Find out why he turned. Then decide. | + 0 0 0
+A Let him think no one knows, and use him. | 0 0 + +
+
+Q HARD | Should old debts between our families be forgiven?
+A Yes. Start fresh. | + 0 - 0
+A No. A debt is a debt. | 0 + + 0
+A Forgiven, but remembered. | 0 0 0 +
+
+Q HARD | A storm is coming and our shelters are full. Who goes in first?
+A Children and the sick. | + 0 0 0
+A Whoever is on the list, in order. | 0 + 0 0
+A Whoever we can't afford to lose. | 0 0 + +
+
+Q HARD | A broker offers us information about you. Should we buy it?
+A Buy it. Then come and ask me if it's true. | + 0 0 0
+A Save your money. I'll tell you what it says. | 0 0 + 0
+A I'd like to know who the broker is. | 0 + 0 +
+
+Q HARD | We'd like you to speak at our council. Will you?
+A Yes, and I'll answer every question. | + 0 - 0
+A Yes. I'll keep it brief and to the point. | 0 + + 0
+A I'd rather speak to a few of you, privately. | 0 0 0 +
+
+Q HARD | Your rivals are offering our people work. How do you answer that?
+A Offer better work. | 0 0 + 0
+A Remind our people where their loyalty lies. | 0 + 0 +
+A Let them choose. People should go where they're treated well. | + - - 0
+
+Q HARD | We could cut off water to the district that defied us. Should we?
+A Never. Water isn't a weapon. | + 0 0 0
+A Yes. Defiance has consequences. | - + 0 -
+A Not yet. Let them wonder if we will. | 0 0 + +
+
+Q HARD | An honest man brought us bad news. Reward him, or punish him?
+A Reward him. Honesty is rare. | + 0 0 0
+A Thank him, and make sure the news goes no further. | 0 0 0 +
+A Neither. He did his job. | 0 + + 0
+
+Q HARD | We've been offered a lower price if we sign today. Should we?
+A Never sign under pressure. Good offers wait. | 0 0 0 +
+A If the numbers work, sign. | 0 0 + 0
+A Only after someone you trust has checked it. | + + 0 0
+
+Q HARD | What's the most important thing a partner can give you?
+A Honesty. | + 0 0 0
+A Reliability. | 0 + + 0
+A Discretion. | 0 0 0 +
+
+Q HARD | If this deal went wrong, who would you blame?
+A Myself. I made the choice. | + 0 0 0
+A Whoever broke the terms. | 0 + + 0
+A No one, out loud. | 0 0 0 +
+
+# ---- added in 3.1-dev.82 (2026-11-16, user: talks are "a bit too easy" once you learn ORDER = Empire, MONEY = Pykes, CUTTHROAT = Dawn,
+# NICE = Rebels; "making it really really hard to tell which of the two are right might not be [the answer] either"): 24 TRAP questions,
+# HARD only. Two replies speak in one faction's voice -- one is right, one GOES TOO FAR (order vs cruelty, kindness vs naivety, good
+# business vs cheating your partners, quiet vs loud) -- and the third speaks for another faction. A careful read tells them apart.
+Q HARD | A district refuses the new curfew. What now?
+A Post patrols, keep the curfew, and reward the first street that complies. | - + 0 0
+A Seal the district until it begs. Nobody eats until it does. | - - 0 0
+A Let the merchants sort it out. A curfew is bad for business. | 0 - + 0
+
+Q HARD | One of your officers made a costly mistake. How do you answer it?
+A A hearing, a demotion, and a record everyone can read. | 0 + 0 0
+A Shoot him in front of his men. They'll never forget it. | - - 0 0
+A Quietly. He owes me now, and that's worth more. | 0 0 0 +
+
+Q HARD | The harbor of {planet} is chaos. Fix it.
+A Registry, schedules, inspections. Every ship in its place. | 0 + 0 0
+A Impound every ship until their captains learn to obey. | - - - 0
+A Lower the docking fees until the good captains come back. | 0 0 + 0
+
+Q HARD | A crowd gathers outside the governor's hall. What do you do?
+A Keep the lines, hear one speaker, and close the square at dusk. | 0 + 0 0
+A Fire into it before it becomes a mob. | - - 0 0
+A Walk out and listen to them. | + - 0 0
+
+Q HARD | How do you keep a conquered world loyal?
+A Fair laws, enforced the same way every day. | 0 + 0 0
+A Take a family from every street as a guarantee. | - - 0 0
+A Make sure everyone there owes you something. | 0 0 0 +
+
+Q HARD | Someone forged papers to land here. What happens to him?
+A Arrest, a trial, and the sentence the law sets. | 0 + 0 0
+A Space him. Papers matter. | - - 0 0
+A Find out who sold him the papers, and buy from them next time. | 0 0 + 0
+
+Q HARD | Refugees are at the gate. How many do you let in?
+A Every one we can feed and shelter, and tomorrow we find more room. | + 0 - 0
+A All of them, right now. We'll work out the food later. | - 0 - 0
+A The ones who can work. The rest go on to the next port. | - + 0 0
+
+Q HARD | Your people want weapons to defend themselves. Do you arm them?
+A Train them first, then arm the ones who are ready. | + 0 0 0
+A Open the armory. Anyone who wants a blaster gets one. | - - 0 0
+A Sell them weapons at a fair price. | 0 - + 0
+
+Q HARD | A prisoner from the other side is in your care. What do you do?
+A Treat him decently and trade him back for one of ours. | + 0 0 0
+A Let him go. Nobody should be anybody's prisoner. | - - 0 0
+A Ask him what he knows, for as long as it takes. | - 0 0 +
+
+Q HARD | How should {planet} be run while you're away?
+A By a council of its own people, with someone I trust watching. | + 0 0 0
+A By whoever shouts loudest. Let the crowd decide everything. | - - 0 0
+A By whoever runs the docks. They always know what's going on. | 0 0 + 0
+
+Q HARD | The local guards are corrupt. What do you do?
+A Replace the worst, protect the honest ones, and pay them properly. | + 0 0 0
+A Disband them all today. The people can police themselves. | - - 0 0
+A Find out who's paying them, and pay more. | 0 0 + 0
+
+Q HARD | A spy is caught in the camp. What happens to her?
+A Hold her, question her fairly, and keep her alive. | + 0 0 0
+A Forgive her and let her stay. Everyone deserves a second chance. | - - 0 -
+A Let her go, and follow her home. | 0 0 0 +
+
+Q HARD | Business is slow. How do you fix it?
+A Cheaper landing fees and faster permits. Volume pays. | 0 0 + 0
+A Skim the shipments that pass through. Nobody counts the crates. | - - - 0
+A Make the competition's ships late. Nobody has to know how. | 0 0 0 +
+
+Q HARD | A partner owes you money and can't pay. What now?
+A New terms: more time, a bigger share. He'll remember the favor. | 0 0 + 0
+A Take his ship and sell it before he wakes up. | - 0 - 0
+A Forgive the debt. He has a family. | + 0 - 0
+
+Q HARD | You found a shortcut through customs. What do you do with it?
+A Rent it to the right people, for a share of every cargo. | - - + 0
+A Use it to keep your partners' share for yourself. | 0 - - 0
+A Report it. Rules are rules. | 0 + - 0
+
+Q HARD | Who gets paid first?
+A The suppliers. Keep them happy and they keep you supplied. | 0 0 + 0
+A Me. The rest can wait until it's convenient. | - 0 - 0
+A The ones who did the dangerous work. | + 0 0 0
+
+Q HARD | A rival offers your crew double wages. How do you keep them?
+A Match it for the best of them, and promise the rest a bonus at the end of the run. | 0 0 + 0
+A Hold back their pay until the run is over. Then they can't leave. | - - - 0
+A Remind them what happens to people who change sides. | - 0 0 +
+
+Q HARD | A cargo arrived damaged. Who pays?
+A The insurer, and I'll make sure the claim goes through fast. | 0 0 + 0
+A Sell it as perfect and let the buyer find out. | - 0 - 0
+A The captain who damaged it. He signed the contract. | 0 + 0 0
+
+Q HARD | Someone stole from you. How do you answer it?
+A Quietly. One morning he wakes up and everything he owns is gone. | - 0 0 +
+A Burn his house down so the whole port knows who did it. | - - - -
+A Ask for it back, and a little extra for the trouble. | 0 0 + 0
+
+Q HARD | A rival is getting too strong. What do you do?
+A Turn his friends against him, one at a time. | 0 0 0 +
+A Kill him in the market square, in daylight. | - - - -
+A Make him a better offer than his friends ever could. | 0 0 + 0
+
+Q HARD | A witness saw something she shouldn't have. What now?
+A Make sure she knows it's better to forget, and make it worth her while. | 0 0 0 +
+A Make an example of her, so every witness on {planet} learns. | - - - -
+A Protect her. She did nothing wrong. | + 0 0 0
+
+Q HARD | How do you want people to talk about you?
+A They don't. Nobody even knows my name. | 0 0 0 +
+A With fear. My name should be on every wall. | - 0 0 -
+A As someone who kept every promise. | 0 + 0 0
+
+Q HARD | A job went wrong and people saw your agents. What now?
+A Get them off-world tonight with new names, and nobody ever mentions it. | 0 0 0 +
+A Silence everyone who saw them. All of them, today. | - - - -
+A Turn yourself in and take the blame. | + 0 0 -
+
+Q HARD | How do you deal with someone who knows your secrets?
+A Keep them close, keep them comfortable, and keep something of theirs. | 0 0 0 +
+A Remove them before they can talk, and leave them where people will see. | - - - -
+A Trust them. Secrets shared make friends. | + 0 0 -

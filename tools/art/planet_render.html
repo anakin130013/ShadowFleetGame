@@ -1,0 +1,40 @@
+<html><body style="margin:0;background:transparent"><canvas id="c" width="280" height="280"></canvas><script>const SCENE_W = 380;
+const PLANET_GRID = 28, PLANET_CELL = 5, PLANET_CX = SCENE_W / 2, PLANET_CY = 178, PLANET_STEP_MS = 120;
+const PLANET_PALETTES = [
+  ['#7A5230','#C08A4A','#E3C07A','#F5E1A8'], ['#5A7A9A','#9EC3DE','#DDEFFA','#FFFFFF'],
+  ['#8A4A3A','#D08858','#F0B888','#FFE0C0'], ['#1E3A22','#3E6B35','#6E8F4A','#9CB06A'],
+  ['#2A2A38','#55556A','#8A8A9E','#FFD166'], ['#3A2A1A','#6B4A2A','#9A7A4A','#E0C080'],
+  ['#3A2440','#6A4A6A','#9A7A8A','#C0A0B0'], ['#3A0A0A','#7A1A1A','#B03030','#E06050'],
+  ['#1A3A6A','#2A6AAA','#4AA04A','#E0E0D0'], ['#1A4A8A','#3A8AC8','#5AB05A','#F0F0F0'],
+  ['#10301A','#1E5A2A','#3A8A3A','#6AB04A'], ['#4A5A6A','#8A9AAA','#C0D0DA','#FFFFFF'],
+];
+function bPlanetPixels(planetIdx, step) {
+  const key = planetIdx + ':' + step;
+  if (bPlanetFor === key && bPlanetCanvas) return bPlanetCanvas;
+  if (!bPlanetCanvas) { bPlanetCanvas = document.createElement('canvas'); bPlanetCanvas.width = PLANET_GRID; bPlanetCanvas.height = PLANET_GRID; }
+  const g = bPlanetCanvas.getContext('2d');
+  g.clearRect(0, 0, PLANET_GRID, PLANET_GRID);
+  const pal = PLANET_PALETTES[planetIdx];
+  const phase = (step % 10000) * 0.06, seed = planetIdx * 1.7 + 0.3, half = PLANET_GRID / 2;
+  for (let j = 0; j < PLANET_GRID; j++) {
+    const ny = (j + 0.5 - half) / half;
+    for (let i = 0; i < PLANET_GRID; i++) {
+      const nx = (i + 0.5 - half) / half;
+      const r2 = nx * nx + ny * ny;
+      if (r2 > 1) continue;
+      const z = Math.sqrt(1 - r2);
+      const lon = Math.atan2(nx, z) + phase;
+      let v = Math.sin(ny * 5 + seed + 1.4 * Math.sin(lon * 2 + ny * 3 + seed));
+      v += 0.35 * Math.sin(lon * 5 + seed * 2) * Math.sin(ny * 9);
+      let idx = v < -0.6 ? 0 : v < 0.1 ? 1 : v < 0.7 ? 2 : 3;
+      const light = -0.55 * nx - 0.35 * ny + 0.6 * z;
+      if (light < 0.15 && idx > 0) idx--;
+      if (light < -0.2 && idx > 0) idx--;
+      g.fillStyle = pal[idx];
+      g.fillRect(i, j, 1, 1);
+    }
+  }
+  bPlanetFor = key;
+  return bPlanetCanvas;
+}
+let bPlanetCanvas=null,bPlanetFor="";const P=parseInt(location.hash.slice(1));const pc=bPlanetPixels(P, 7);const g=document.getElementById("c").getContext("2d");g.imageSmoothingEnabled=false;g.drawImage(pc,0,0,280,280);</script></body></html>

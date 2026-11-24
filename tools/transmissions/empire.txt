@@ -1,0 +1,125 @@
+# GALACTIC EMPIRE -- cold, bureaucratic, threatening. Everything is a record,
+# a file, a procedure. Spoken by whichever Imperial commander isn't yours
+# (Stahl / Vell / Thane). Same format and causes as rebel.txt.
+
+took: {planet} has been noted. So have you.
+took: Seizure of Imperial property on {planet}. A file has been opened in your name.
+took: The loss of {planet} has been logged, assessed, and assigned to you personally.
+took: {planet} was Imperial territory. It will be again. You will not be there to see it.
+took: Your actions on {planet} have been forwarded to the regional governor. He reads everything.
+took: You have taken {planet}. The Empire has taken notice. Only one of those is permanent.
+took: Every rivet on {planet} was paid for with Imperial credits. We will be collecting.
+took: {planet} has been reclassified as occupied. You have been reclassified as a priority.
+took: The garrison on {planet} filed its final report. Your name was in it.
+took: A temporary setback on {planet}. Temporary for us, Commander.
+took: We have ten thousand worlds. You have {planet}. Consider the arithmetic.
+took: Interference on {planet} has been recorded. Corrective measures are being drafted.
+
+betray: You signed our agreements and fired on {planet}. That is called treason.
+betray: The Empire extended its trust exactly once. You spent it on {planet}.
+betray: Your status has been revised from partner to target. Effective immediately.
+betray: An act of betrayal on {planet}. The paperwork for your arrest is already complete.
+betray: We were cordial, Commander. We will now be thorough.
+betray: Loyalty is rewarded. Betrayal is studied, then corrected.
+betray: You have mistaken our patience for weakness. Many have. Fewer remain.
+betray: Every courtesy we extended is hereby withdrawn. Every one.
+betray: The Emperor's representatives do not forget a broken treaty. They frame it.
+betray: You attacked {planet} under a flag of friendship. That flag is now burned.
+betray: Your file has been moved to a different drawer. It is a very short drawer.
+betray: There will be no hearing, Commander. The verdict was reached at {planet}.
+
+rival: The insurgents on {planet} have been dealt with. The Empire is... satisfied.
+rival: Rebel activity on {planet} has ceased. Your contribution has been entered into the record.
+rival: You have removed a terrorist cell from {planet}. Order thanks you.
+rival: The Rebellion lost {planet} today. The Empire lost nothing. An efficient outcome.
+rival: Your work on {planet} has been noted favorably. That is rarer than you think.
+rival: Insurgents rarely survive contact with competence. {planet} proves it.
+rival: The Empire appreciates contractors who clean up after themselves.
+rival: {planet} is free of sedition. You may find our checkpoints friendlier.
+rival: Well done. The Rebellion has one fewer place to hide its children and its lies.
+rival: A Rebel stronghold falls on {planet}. The Moffs will drink to your health tonight.
+rival: Your service on {planet} has been recommended for commendation. Do not expect a medal.
+rival: The Empire rewards usefulness. You have been useful.
+
+paid: Your payment for {planet} has been processed. Compliance is always cheaper, Commander.
+paid: Transfer of {planet} approved. All fees paid in full. How refreshingly civil.
+paid: The Imperial Treasury acknowledges receipt. {planet} is yours, subject to review.
+paid: You paid for {planet} rather than fighting for it. Wise. The alternative was expensive.
+paid: Credits received. Title transferred. The Empire admires a clean ledger.
+paid: {planet} changes hands by contract. This is how civilization works, Commander.
+paid: Your purchase of {planet} is legal, registered, and revocable. Remember the last word.
+paid: Payment accepted. The Empire prefers its subjects solvent.
+paid: A sound investment in {planet}. Do maintain it to Imperial standards.
+paid: The transaction is complete. You have shown an understanding of how things are done.
+paid: The Imperial Treasury thanks you. It so rarely gets to.
+paid: {planet} is yours on paper. In the Empire, paper is everything.
+
+deal: An orderly transfer of {planet}. The Moffs appreciate paperwork that isn't written in blood.
+deal: Terms for {planet} are accepted and filed in triplicate. Do not lose your copy.
+deal: The Empire honors its agreements. We expect you to honor yours with equal precision.
+deal: A reasonable arrangement on {planet}. The Empire can be reasonable, when it chooses.
+deal: Your signature on the {planet} accord has been verified. So has your handwriting.
+deal: Negotiation concluded. Deviation from the terms will be interpreted as intent.
+deal: The {planet} protocol is now in effect. Violations carry penalties outlined in appendix nine.
+deal: You negotiated well. The Empire respects a capable counterpart. To a point.
+deal: Agreement reached on {planet}. Our patrols will adjust their routes. For now.
+deal: The Empire does not make friends. It makes arrangements. This is a good one.
+deal: Signed, sealed, and archived. {planet} will be watched to ensure compliance.
+deal: A civilized outcome on {planet}. Let us both pretend that surprises no one.
+
+walkout: You left the table on {planet}. The Empire does not reschedule.
+walkout: Departure from talks on {planet} has been recorded as refusal. Refusal has consequences.
+walkout: The Imperial envoy waited on {planet} for eleven minutes. He has never waited that long before.
+walkout: You walked away from {planet}. The offer walked away with you.
+walkout: The Empire extended a hand. You will remember that it was a hand, and not a fist.
+walkout: Your absence from the {planet} talks has been noted in your file. In red.
+walkout: Negotiations on {planet} are closed. Other methods remain open.
+walkout: Our diplomats are expensive to transport. You owe the Empire for the trip.
+walkout: Leaving was your decision. What follows will be ours.
+walkout: The talks on {planet} have ended at your request. Future requests will be denied.
+walkout: You may come back to the table. It will be a different table, in a smaller room.
+walkout: The Empire is patient. It is not that patient.
+
+kept: Obligation fulfilled. Your record has been amended accordingly.
+kept: You did as agreed. The Empire notes reliability, and occasionally rewards it.
+kept: Terms met in full. Your file has been moved from the red drawer to the grey one.
+kept: Compliance confirmed. You may find your next request processed faster.
+kept: The Empire expects promises to be kept. You have met expectations. Do not stop.
+kept: Your word held. That puts you ahead of most of the Outer Rim.
+kept: Verified. Logged. Appreciated, in the measured way the Empire appreciates things.
+kept: Punctual, complete, and without complaint. You would make an excellent officer.
+kept: The agreement near {planet} stands fulfilled. The governor is pleased. Briefly.
+kept: Promise kept. Continue in this manner and you may find the Empire generous.
+kept: A rare example of a contract honored without supervision. It has been filed as precedent.
+kept: Your reliability has been noted at the highest levels. That is a compliment. Mostly.
+
+broke: You have defaulted on an Imperial agreement. Few people do that twice.
+broke: Breach of contract confirmed. Penalties are being calculated. They are compounding.
+broke: The Empire is not a bank, Commander. It does not send reminders.
+broke: Your promise has been reclassified as a lie. So, by extension, have you.
+broke: Non-compliance recorded. Your name has been forwarded to people with fewer manners than me.
+broke: We were told you were reliable. That officer has been reassigned.
+broke: A broken agreement is a declaration. We accept your declaration.
+broke: The Empire remembers every unpaid debt. Every one, for as long as it takes.
+broke: Failure to deliver noted. The Empire also delivers. Eventually.
+broke: You had a contract with the Empire. Now you have a problem with it.
+broke: Default logged. Credit revoked. Patience exhausted.
+broke: Your word is worthless to us now. Your fleet, however, still has resale value.
+
+# PARKED (v0.23.0): Endor is a Rebel world in the game, so the Empire only
+# speaks about it as the Rebels' rival -- glad, not robbed. These read as a
+# loss. Rewrite as "glad" lines, or keep if Endor becomes Imperial.
+#@ENDOR: Endor's forest moon was a garrison, not a picnic ground. We will be back for it.
+#@ENDOR: The bunkers on Endor were built to last a thousand years. Enjoy your brief tenure.
+@KIJIMI: Kijimi's snow hides every footprint but yours, Commander.
+@KIJIMI: Kijimi's thieves answered to us. Now they'll answer to you. Good luck with that.
+@CORELLIA: Corellia builds the Empire's ships. Every shipyard there knows our name, not yours.
+@CORELLIA: You hold the shipyards of Corellia. We hold the people who know how to run them.
+@CORUSCANT: You stand on Coruscant by accident of timing, nothing more. Enjoy the view while it lasts.
+@CORUSCANT: Coruscant has a thousand levels. You have taken the top one. The rest are still ours.
+
+# 3.1-dev.49 courted -- you won / bought a world from OUR RIVAL by talks or Credits (we grumble)
+courted: Your negotiations with insurgents over {planet} have been entered into the record.
+courted: Dealing with Rebel sympathizers on {planet}. Noted. Filed. Remembered.
+courted: {planet} changed hands through a Rebel agreement. The Empire does not recognize such agreements. Or forget them.
+courted: Commerce with traitors on {planet} is a crime. We are merely deciding how serious.

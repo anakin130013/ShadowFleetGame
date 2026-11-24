@@ -1,0 +1,133 @@
+# Faction questions (draft v1, 2026-10-19) -- asked ONLY once you've revealed the
+# planet's Affiliation (a reward for scouting). One replaces the conversation's
+# second ("harder") question. These may name the faction -- you already know who
+# you're talking to -- but the replies should all sound loyal enough that the
+# right one still takes thought (user: "not super easy to know which answers are
+# which"). One reaction per reply, from the asking faction only.
+#
+# Format:  F <R|E|P|C> | question
+#          A reply | + - or 0
+
+# ---- Rebels: people, hope, second chances, discipline with a heart ----
+F R | An Imperial defector wants to join us. Half our people say he's a spy. What would you do?
+A Take him in, and give him a job where a lie can't hurt anyone. | +
+A Turn him away. One spy could cost us everything. | 0
+A Take him in and feed him false plans. If he's a spy, we'll know. | -
+
+F R | The Empire is bombing the next system. We can save the people or the shipyard. Not both.
+A The people. Ships can be rebuilt. | +
+A Split our ships and try for both. | 0
+A The shipyard. It will save more lives in the long run. | -
+
+F R | Our pilots are young and frightened. What do they need to hear from you?
+A The truth. Some won't come back, and why it's worth it. | +
+A That they'll win. Fear loses battles. | 0
+A Nothing. Orders keep people alive. | -
+
+F R | A slaver clan offers to help us take this world. Do we accept?
+A No. We don't win by becoming them. | +
+A Accept, then free their slaves once we're in. | 0
+A Accept. A world freed is worth one bad bargain. | -
+
+F R | One of our cells broke orders and saved a village. Should they be punished?
+A Thanked first. Then reminded why orders matter. | +
+A No. They did what the Rebellion is for. | 0
+A Yes. A rebellion without discipline is a mob. | -
+
+F R | If we lose this war, what should the galaxy remember about us?
+A That we kept helping people, even when it cost us. | +
+A That we fought to the last ship. | 0
+A That we were right. | -
+
+# ---- Empire: order, rank, obedience, the schedule ----
+F E | A governor here is skimming the tithe. He is also very effective. Your recommendation?
+A Report him. Results don't excuse stealing from the Empire. | +
+A Leave him. Results are what Coruscant wants. | 0
+A Take a share, and keep him effective. | -
+
+F E | The locals resent our garrison. How do we win their loyalty?
+A We don't need their loyalty. We need their obedience. | +
+A Schools, roads and order. Give them reasons. | 0
+A Withdraw the garrison and let them breathe. | -
+
+F E | An officer disobeyed orders and won the battle. Promote him, or court-martial him?
+A Court-martial him. Then study what he did. | +
+A Promote him. Victory is the order that matters. | 0
+A Promote him. The Empire needs more men who think for themselves. | -
+
+F E | A Rebel cell has surrendered. They beg for mercy. What do we tell them?
+A Mercy is the Emperor's to give. Send them to Coruscant. | +
+A Execute the leaders. Spare the rest, as a lesson. | 0
+A Grant it. Mercy might turn the next cell. | -
+
+F E | The schedule says the station is finished in a year. Can it be done faster?
+A It will be finished on schedule. Exactly on schedule. | +
+A Double the crews. Faster is always better. | 0
+A Only if you want it to fall apart. | -
+
+F E | Why do you serve?
+A Because the galaxy needs order, and order needs the Empire. | +
+A Because the Empire rewards those who serve it well. | 0
+A Because no one else could do it as well as I can. | -
+
+# ---- Pykes: profit, paid debts, silence, owning the ears ----
+F P | A shipment went missing on your route. Who pays?
+A I do, today. Then I find out who took it. | +
+A We split it. We're partners. | 0
+A Your insurer. I just fly the route. | -
+
+F P | A customs officer wants double this year. Pay him, or replace him?
+A Pay him this year. Learn everything about him by next year. | +
+A Replace him. Greed is a bad habit. | 0
+A Report him. Let the law deal with it. | -
+
+F P | One of our runners skimmed a little spice. He's our best pilot.
+A He pays it back with interest, and flies the worst routes for a year. | +
+A Cut him loose. No exceptions. | 0
+A Let it go once. Good pilots are rare. | -
+
+F P | How do you keep a secret on a world full of ears?
+A I make sure the ears belong to me. | +
+A I don't say anything worth hearing. | 0
+A I trust my people. | -
+
+F P | A rival syndicate offers peace. What's it worth?
+A Whatever they pay for it. Every month. | +
+A Nothing. Peace is how they get close. | 0
+A Everything. War is bad for everyone. | -
+
+F P | What do you do with a debt that can't be paid?
+A Turn it into a favor. Favors never expire. | +
+A Sell it to someone who will collect. | 0
+A Write it off. Some losses are just losses. | -
+
+# ---- Crimson Dawn: respect, discretion, manners, a long memory ----
+F C | Your host at dinner insulted you in front of everyone. What did you do?
+A Thanked him for the meal. He'll learn what it cost him later. | +
+A Left early. I don't stay where I'm not respected. | 0
+A Corrected him, right there, where everyone could hear. | -
+
+F C | A lieutenant brags in the cantinas about who he works for.
+A He'll be invited to dinner. He won't brag again. | +
+A Promote him somewhere far away. | 0
+A Let him. Fear of the name is useful. | -
+
+F C | Someone stronger than us wants this world. Fight, or give it up?
+A Neither. We make it more trouble than it's worth, quietly. | +
+A Give it up, and remember who took it. | 0
+A Fight. Never let them see us bend. | -
+
+F C | A gift arrived from our oldest enemy. What do we send back?
+A Something finer, and a thank-you note. | +
+A Nothing. Silence says enough. | 0
+A His gift, returned in pieces. | -
+
+F C | How should the people here think of Crimson Dawn?
+A They shouldn't think of us at all. | +
+A As the ones who keep the peace. | 0
+A As the ones you don't cross. | -
+
+F C | One of our own betrayed us, then came back begging. What now?
+A Welcome him home. Loyalty is remembered. So is betrayal. | +
+A Hear him out, then decide. | 0
+A Make an example of him, where everyone can see. | -

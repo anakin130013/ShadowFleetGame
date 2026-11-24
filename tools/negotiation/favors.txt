@@ -1,0 +1,110 @@
+# Favor bank (draft v2, 2026-10-19) -- replaces late_favors.txt and the 3 fixed
+# favors per faction. Each conversation that ends in a favor DRAWS 3 at random
+# (user: only 12 favors would get memorized). Every favor is something the game
+# can judge itself.
+#
+# N = a normal favor (3 rounds). Those marked * are the faction's HARD favors:
+#     with two or more misses ONE of them is drawn at random and is the only offer
+#     (v0.30.4, playtest 2026-10-28: "it was the same every time" -- there used to be
+#     one per faction). Hard = take a rival world, destroy a fleet, a Core world, hold two.
+# L = a LATE favor (the last 2 rounds). A late draw = 1 CREDITS + 2 deeds.
+#     CREDITS = paid on the spot; {cr} = your PAY price for this planet x 1.5
+#     (at least +4) -- always more than buying it outright, so a missed late
+#     negotiation is a gamble that costs you. Late deeds are due when the war
+#     ends; the screen says how many rounds that is. Undone = the faction takes
+#     the planet back (and its VP) before the final count.
+#
+# Checks (the game judges them):
+#   TAKE <f>      gain a planet of faction f        WIN_PVP     destroy another commander's fleet
+#   NO_INVEST     no defense investment here        NO_ATTACK <f> attack no planet of faction f
+#   HOLD          still hold this planet at the end TRIBUTE <n> pay n Credits at every round start
+#   WIN_BATTLE    NEW: win any battle               TAKE_CORE   NEW: gain a Core world
+#   HOLD_TWO <f>  NEW: hold this planet and a world of faction f (always the RIVAL) at the same time
+#   CREDITS       late only: pay {cr} now
+#   WIN_BATTLE = capture a planet in a fight, or destroy another commander's fleet.
+#
+# Format:  N|L <R|E|P|C> | [*]<CHECK> [arg] | text
+#          H <R|E|P|C> | line    (a hostile faction unmasking itself at the end of a
+#                                 conversation, or refusing to talk -- v0.30.1)
+
+# ---- Hostile lines (user: "there should be more lines for that") ----
+H R | We've heard what you've done to people like ours, commander. There's nothing left to talk about.
+H R | You smile well. So did the officers who burned our homes. Leave.
+H R | We know your name. Our families know it too. This conversation is over.
+H R | You've answered every question so carefully. We still remember what you did.
+H E | Your file was on my desk before you sat down. This conversation is over.
+H E | The Empire does not negotiate with its enemies. It records them.
+H E | Your answers were adequate. Your record is not. Dismissed.
+H E | I have heard enough to complete my report. You will not like its conclusions.
+H P | We knew your name before you landed. We know your debts. There's no deal.
+H P | You've cost the Syndicate enough already. Leave while your ship still starts.
+H P | Nice talk. We were listening to your crew the whole time. Goodbye.
+H P | Every answer was right, and every one was a lie. We keep the receipts.
+H C | How charming, to be lied to so politely. But we know exactly who you are.
+H C | We never forget a face, commander. Especially yours. Goodbye.
+H C | You have lovely manners. It almost made us forget. Almost.
+H C | Thank you for the conversation. Please don't mistake it for a welcome.
+
+# ---- Rebels ----
+N R | *TAKE E | Strike the Empire: take an Imperial world within 3 rounds.
+N R | HOLD | Hold {planet} for 3 rounds. Don't let it fall.
+N R | NO_INVEST | Local Autonomy: no defense investment here for 3 rounds.
+N R | *WIN_PVP | Break the blockade: destroy another commander's fleet within 3 rounds.
+N R | NO_ATTACK R | Stand with us: attack no Rebel world for 3 rounds.
+N R | TRIBUTE 1 | Feed the refugees: 1 Credit to us at every round start for 3 rounds.
+N R | WIN_BATTLE | Prove yourself: win a battle within 3 rounds.
+N R | *HOLD_TWO E | Hold the front: hold {planet} and an Imperial world at the same time within 3 rounds.
+L R | CREDITS | Supply the fleet. {cr} Credits, now, and it's yours.
+L R | CREDITS | Arm the cells. {cr} Credits, now.
+L R | *TAKE E | Strike now: take an Imperial world before the war ends.
+L R | *WIN_PVP | Break their line: destroy another commander's fleet before the war ends.
+L R | *TAKE_CORE | One last push: take a Core world before the war ends.
+L R | *HOLD_TWO E | Leave a mark: hold {planet} and an Imperial world at the same time before the war ends.
+
+# ---- Empire ----
+N E | *TAKE R | Enforce Imperial Law: take a Rebel world within 3 rounds.
+N E | HOLD | Imperial Garrison: keep {planet} under your flag for 3 rounds.
+N E | NO_ATTACK E | Swear Allegiance: attack no Imperial world for 3 rounds.
+N E | TRIBUTE 2 | The Imperial tithe: 2 Credits at every round start for 3 rounds.
+N E | *TAKE_CORE | Secure the Core: take a Core world within 3 rounds.
+N E | WIN_BATTLE | A show of force: win a battle within 3 rounds.
+N E | *WIN_PVP | Eliminate a threat: destroy another commander's fleet within 3 rounds.
+N E | *HOLD_TWO R | Hold the line: hold {planet} and a Rebel world at the same time within 3 rounds.
+L E | CREDITS | The Imperial levy. {cr} Credits, now.
+L E | CREDITS | A contribution to the war effort. {cr} Credits, now.
+L E | *TAKE R | Crush the Rebellion: take a Rebel world before the war ends.
+L E | WIN_BATTLE | A show of force: win a battle before the war ends.
+L E | *TAKE_CORE | Restore order to the Core: take a Core world before the war ends.
+L E | *HOLD_TWO R | Hold the line: hold {planet} and a Rebel world at the same time before the war ends.
+
+# ---- Pykes ----
+N P | *TAKE C | Undercut Crimson Dawn: take one of their worlds within 3 rounds.
+N P | TRIBUTE 1 | Spice Contract: 1 Credit to us at every round start for 3 rounds.
+N P | *WIN_PVP | Remove a Problem: destroy another commander's fleet within 3 rounds.
+N P | NO_INVEST | Keep it quiet: no defense investment here for 3 rounds.
+N P | TRIBUTE 2 | Interest: 2 Credits to us at every round start for 3 rounds.
+N P | NO_ATTACK P | Stay off our routes: attack no Pyke world for 3 rounds.
+N P | HOLD | Protect the route: keep {planet} for 3 rounds.
+N P | *HOLD_TWO C | Squeeze them: hold {planet} and a Crimson Dawn world at the same time within 3 rounds.
+L P | CREDITS | Pay in full. {cr} Credits, now, and nobody asks questions.
+L P | CREDITS | Settle your account. {cr} Credits, now.
+L P | *TAKE C | Hit Crimson Dawn: take one of their worlds before the war ends.
+L P | *WIN_PVP | Remove a problem: destroy another commander's fleet before the war ends.
+L P | WIN_BATTLE | Clear the route: win a battle before the war ends.
+L P | *HOLD_TWO C | Squeeze them out: hold {planet} and a Crimson Dawn world at the same time before the war ends.
+
+# ---- Crimson Dawn ----
+N C | *TAKE P | Undercut the Syndicate: take a Pyke world within 3 rounds.
+N C | *WIN_PVP | Remove a Rival: destroy another commander's fleet within 3 rounds.
+N C | NO_INVEST | Discretion: no defense investment here for 3 rounds.
+N C | NO_ATTACK C | Courtesy: attack no Crimson Dawn world for 3 rounds.
+N C | TRIBUTE 1 | A token of respect: 1 Credit to us at every round start for 3 rounds.
+N C | *TAKE_CORE | A seat at the high table: take a Core world within 3 rounds.
+N C | HOLD | Keep our house in order: hold {planet} for 3 rounds.
+N C | WIN_BATTLE | Show us you can still fight: win a battle within 3 rounds.
+L C | CREDITS | A gesture of respect. {cr} Credits, now.
+L C | CREDITS | An old debt, settled. {cr} Credits, now.
+L C | *TAKE P | Undercut the Syndicate: take a Pyke world before the war ends.
+L C | *WIN_PVP | Remove a rival: destroy another commander's fleet before the war ends.
+L C | *TAKE_CORE | A seat at the high table: take a Core world before the war ends.
+L C | *HOLD_TWO P | A quiet victory: hold {planet} and a Pyke world at the same time before the war ends.
