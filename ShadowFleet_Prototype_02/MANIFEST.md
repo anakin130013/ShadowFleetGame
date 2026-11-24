@@ -1,6 +1,6 @@
 # Shadow Fleet Prototype 02 — Version Manifest
 
-**Firmware version:** v3.1-dev.126 (2026-11-23)
+**Firmware version:** v1.0 (2026-11-23)
 
 This is the exact, internally-consistent file set for the current build. If
 your local folder doesn't match this list exactly, pull the fresh zip rather
@@ -9,9 +9,9 @@ than hunting through chat history for individual files.
 ## How to verify
 
 The version shows in three places, all should say `v3.1-dev.72`:
-1. **Serial Monitor** on boot: `Shadow Fleet Prototype 02  v3.1-dev.126  (2026-11-23)`
-2. **AMOLED start/home screen**: subtitle reads `v3.1-dev.126`
-3. **Phone page footer**: `Firmware v3.1-dev.126`
+1. **Serial Monitor** on boot: `Shadow Fleet Prototype 02  v1.0  (2026-11-23)`
+2. **AMOLED start/home screen**: subtitle reads `v1.0`
+3. **Phone page footer**: `Firmware v1.0`
 
 ## Required files
 
@@ -817,6 +817,9 @@ portraits, transmission name tag) will be sized wrong.
 ### v3.1-dev.126 (2026-11-23) -- polish + an Arduino IDE backup
 - Last Orders: SMUGGLERS fits beside its target. World page: hidden details say "Unknown", not "?".
 - Building in the Arduino IDE: the sketch carries its own build_opt.h, and a ready lv_conf.h ships in arduino/.
+
+### v1.0 (2026-11-23) -- the public release
+- Shadow Fleet goes public: MakerWorld listing, public repo and web installer. Same game as v3.1-dev.126, renamed v1.0.
 
 ## What's still ahead (the rest of the agreed plan)
 

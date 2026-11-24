@@ -6,7 +6,7 @@
 // exact string against Serial output on boot, the AMOLED home screen, and the
 // phone page footer to confirm all three actually agree on what's running.
 // ---------------------------------------------------------------------------
-#define FIRMWARE_VERSION "v3.1-dev.126"
+#define FIRMWARE_VERSION "v1.0"
 #define FIRMWARE_DATE "2026-11-23"
 // v0.1.0 - Original single-player Shadow Fleet UI (star field, static screens)
 // v0.2.0 - Corrected BSP (pins/reset/enable/touch protocol) for 1.43 (non-C) board
@@ -3566,4 +3566,7 @@
 //   (.fhfl.long, 8 px / .5 px spacing); a hidden Resources / Trait on the world page says "Unknown" instead of a bare "?" (only
 //   the harness ever hid them -- they are public from round 1). Arduino IDE backup: tools/release/arduino_ide/ (build_opt.h with
 //   the table's flags, a ready lv_conf.h with the PSRAM pool) staged into the public repo.
+// v1.0 (2026-11-23) -- THE PUBLIC RELEASE (MakerWorld + github.com/anakin130013/ShadowFleetGame). Same game as v3.1-dev.126 (the
+//   user flashed dev.126 from the live web installer as a customer: "worked great"); only the version name changes. The 3.1-dev
+//   line ends here; later builds count on from v1.0.
 

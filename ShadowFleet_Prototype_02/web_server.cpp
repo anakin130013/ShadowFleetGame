@@ -1515,7 +1515,7 @@ static const char PAGE_HTML[] PROGMEM = R"HTML(
 </div>
 
 <script>
-const PAGE_FW = 'v3.1-dev.126';  // 3.1-dev.44: written by tools/page/make_page_gz.py from version.h -- the phone reloads when the table runs something else
+const PAGE_FW = 'v1.0';  // 3.1-dev.44: written by tools/page/make_page_gz.py from version.h -- the phone reloads when the table runs something else
 let myId = localStorage.getItem('sf_id');
 if (!myId) { myId = 'p' + Math.floor(Math.random()*1e9); localStorage.setItem('sf_id', myId); }
 let mySlot = -1;
