@@ -10,7 +10,7 @@
 2. **Everyone scans it** with their phone camera. No app to install.
 3. **Pick a seat, then a character.** Tap a face to read their story. YOUR KIT shows what they're good at.
 4. **First time playing?** Turn on **FIRST GAME** at the seat picker. Rivet, your droid, walks you around the real screens in round 1 and explains each new thing the first time it happens.
-5. **Put fleet marker 1 on your home world** on the map, then tap **START** on any phone.
+5. **On the map, put one of your claim tokens and all three of your fleet markers on your home world.** It's your hangar: you start holding it, with 3 ships in Fleet 1 (Fleets 2 and 3 are empty until you build ships for them). Then tap **START** on any phone.
 
 ---
 
@@ -18,7 +18,7 @@
 
 The game lasts **6, 8 or 10 rounds**. The most **Victory Points** at the end wins.
 
-- **Hold worlds.** Outer Rim 2 VP · Mid Rim 3 · Core 5 · any home world 4. Lose a world and its VP goes with it.
+- **Hold worlds.** Outer Rim 2 VP · Mid Rim 3 · Core 5 · any home world 4 (a home world nobody plays counts as Outer Rim). Lose a world and its VP goes with it.
 - **Finish your quest:** +5 VP. It's on your kit.
 - **Destroy another player's fleet:** +2 VP.
 
@@ -43,7 +43,15 @@ Open the world your fleet is at on the **STAR MAP** and choose how. Each fleet a
 | **NEGOTIATE** | Answer the world's faction the way they want to hear it. |
 | **BRIBE** | Pay Credits and it's yours. |
 
-A world another player holds can be taken by **FIGHT**, an **UPRISING** (win over its people) or a **BUYOUT** (pay double; they can match it). Home worlds only fall to a fight. You can also attack another player's fleet.
+A world another player holds can be taken by **FIGHT**, an **UPRISING** (win over its people) or a **BUYOUT** (pay double; they can match it). Home worlds only fall to a fight, unless nobody plays that faction. You can also attack another player's fleet.
+
+---
+
+## Your pieces
+
+- **Fleet markers 1, 2, 3** show where each of your fleets is. All three start on your home world, your hangar.
+- **Claim tokens** show which worlds you hold. Take a world: put a token on it. Lose one: the new holder swaps in theirs.
+- The phones keep the real count of ships and defenders, so the board only needs to show *where*.
 
 ---
 

@@ -679,6 +679,8 @@ int planetFaction(int planetIdx);        // FACTION_*
 bool planetResHigh(int planetIdx);
 bool planetDefHigh(int planetIdx);
 int planetHomeOf(int planetIdx);          // FACTION_* whose home world it is (Yavin 4, Mustafar, Oba Diah, Dathomir), else -1
+int liveHomeOf(const GameState &gs, int planetIdx);  // v1.0.1: the same, but only while someone plays that faction (else -1 =
+                                                     // an ordinary Outer Rim world: normal guard, 2 VP, talks and bribes)
 int homePlanetOf(int faction);            // the reverse, -1 if none
 int homeSlotOf(const GameState &gs, int faction);  // the seated player of that faction, else -1
 const char *planetCharValue(const GameState &gs, int planetIdx, int charIdx);  // text the intel tiles show

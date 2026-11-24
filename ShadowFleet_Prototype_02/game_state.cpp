@@ -114,6 +114,12 @@ int homeSlotOf(const GameState &gs, int f) {
   for (int i = 0; i < MAX_PLAYERS; i++) if (gs.players[i].active && gs.players[i].chosenFaction == f) return i;
   return -1;
 }
+// v1.0.1 (user 2026-11-23: unused home worlds "would be good to be like a normal outer rim world"): a home world whose
+// faction nobody plays follows the Outer Rim rules -- the ring's guard, 2 VP, Negotiate / Bribe / Buyout / Uprising.
+int liveHomeOf(const GameState &gs, int p) {
+  const int home = planetHomeOf(p);
+  return home >= 0 && homeSlotOf(gs, home) >= 0 ? home : -1;
+}
 
 // Starting (and rebuilt-after-capture) garrison. A home world held by its own
 // faction keeps the home guard -- also while it waits for them at the start;
@@ -121,10 +127,10 @@ int homeSlotOf(const GameState &gs, int f) {
 // that faction = the neutral guard.
 static int startGarrisonOf(const GameState &gs, int p) {
   if (p < 0 || p >= NUM_PLANETS) return GARRISON_OUTER;
-  const int home = planetHomeOf(p), owner = gs.planetOwner[p];
+  const int home = liveHomeOf(gs, p), owner = gs.planetOwner[p];
   if (home >= 0) {
     if (owner >= 0 && owner < MAX_PLAYERS) return gs.players[owner].chosenFaction == home ? HOME_GUARD : GARRISON_OUTER;
-    return homeSlotOf(gs, home) >= 0 ? HOME_GUARD : HOME_GUARD_NEUTRAL;
+    return HOME_GUARD;
   }
   static const int RING_BASE[3] = { GARRISON_OUTER, GARRISON_MID, GARRISON_CORE };
   const int ring = PLANETS[p].ring;
@@ -266,7 +272,7 @@ void snapshotRumor(const GameState &gs, char *out, size_t n, int *planet) {
       if (!(pl.intelEyed & (1u << p))) continue;
       const int own = gs.planetOwner[p];
       if (own >= 0 && own != sl && nt < 6) {
-        snprintf(top[nt].t, sizeof(top[0].t), planetHomeOf(p) >= 0 && planetHomeOf(p) == gs.players[own].chosenFaction
+        snprintf(top[nt].t, sizeof(top[0].t), liveHomeOf(gs, p) >= 0 && liveHomeOf(gs, p) == gs.players[own].chosenFaction
                  ? "Someone has been casing %s. Bold." : "Someone is pretty interested in %s, huh?", nm[p]);
         top[nt++].p = (int8_t)p;
       } else if (own < 0 && nr < 16) {
@@ -299,7 +305,7 @@ void snapshotRumor(const GameState &gs, char *out, size_t n, int *planet) {
   uint32_t seed = (uint32_t)gs.round * 2654435761u;
   for (int p = 0; p < NUM_PLANETS; p++) seed = seed * 31 + (uint32_t)(gs.planetFactionOf[p] + 1);
   for (int p = 0; p < NUM_PLANETS && nr < 22; p++) {
-    if (gs.planetOwner[p] >= 0 || planetHomeOf(p) >= 0) continue;
+    if (gs.planetOwner[p] >= 0 || liveHomeOf(gs, p) >= 0) continue;
     if (gs.planetDefense[p] < startGarrisonOf(gs, p)) {
       snprintf(rest[nr].t, sizeof(rest[0].t), "%s is down to %d defenders. You didn't hear it from me.", nm[p], gs.planetDefense[p]);
       rest[nr++].p = (int8_t)p;
@@ -308,7 +314,7 @@ void snapshotRumor(const GameState &gs, char *out, size_t n, int *planet) {
   {  // one world's hidden leaning (a world not everyone knows yet)
     int pick = -1, seen = 0;
     for (int p = 0; p < NUM_PLANETS; p++) {
-      if (planetHomeOf(p) >= 0) continue;
+      if (liveHomeOf(gs, p) >= 0) continue;
       bool someoneBlind = false;
       for (int sl = 0; sl < MAX_PLAYERS; sl++) if (gs.players[sl].active && !gs.players[sl].revealed[p][0]) someoneBlind = true;
       if (someoneBlind && ((seed >> 3) + (uint32_t)p * 7u) % (uint32_t)(++seen) == 0) pick = p;
@@ -382,7 +388,7 @@ void snapshotGarrisonRange(const GameState &gs, int slot, int p, int *lo, int *h
   if (fresh) {
     *lo = *hi = me.defSeen[p] - 1;  // you looked and nothing changed since
     *hi += hidden;
-  } else if (planetHomeOf(p) >= 0 && owner < 0) {
+  } else if (liveHomeOf(gs, p) >= 0 && owner < 0) {
     *lo = *hi = startGarrisonOf(gs, p);  // an unheld home guard's size is public
   } else if (owner >= 0 && owner < MAX_PLAYERS) {
     *lo = startGarrisonOf(gs, p);        // a player's world: anything up to a full garrison
@@ -451,7 +457,7 @@ void negFillPlanet(const char *src, int planetIdx, char *out, size_t outSize) {
 // home world is worth 2 to its own faction and 6 to anyone who takes it.
 int planetVP(const GameState &gs, int planetIdx, int slot) {
   if (planetIdx < 0 || planetIdx >= NUM_PLANETS) return 0;
-  const int home = planetHomeOf(planetIdx);
+  const int home = liveHomeOf(gs, planetIdx);
   if (home >= 0) return VP_HOME;  // 2.0-dev.23: any home world, whoever holds it
   const int ring = PLANETS[planetIdx].ring;
   return ring == RING_CORE ? VP_PLANET_CORE : ring == RING_MID ? VP_PLANET_MID : VP_PLANET_OUTER;
@@ -695,7 +701,7 @@ void snapshotTransmissionText(const GameState &gs, int slot, char *out, size_t o
 static uint8_t gainBigsLocked(int planet, int slot) {
   if (planet < 0 || planet >= NUM_PLANETS) return 0;
   uint8_t b = 0;
-  const int home = planetHomeOf(planet);
+  const int home = liveHomeOf(state, planet);
   if (home >= 0 && slot >= 0 && slot < MAX_PLAYERS && state.players[slot].chosenFaction != home) b |= 1u << TXB_SEAT;
   if (PLANETS[planet].ring == RING_CORE) b |= 1u << TXB_CORE;
   return b;
@@ -1751,7 +1757,7 @@ static void tableQueueTickLocked() {
   for (int k = 1; k < state.tqN; k++) memcpy(state.tq[k - 1], state.tq[k], 4);
   state.tqN--;
 }
-static bool homeWorld(int p) { return planetHomeOf(p) >= 0; }
+static bool homeWorld(int p) { return liveHomeOf(state, p) >= 0; }
 // 3.1-dev.51 SPREAD THE CHANCES (playtest: races / jobs / commotions "group in one place most games"): of the worlds that
 // qualify, prefer one far from the last few the galaxy named (still random -- a jitter on the distance). Map positions as
 // the phone's GALAXY_POS (and FH_POS below).
@@ -4830,7 +4836,7 @@ int snapshotPayPrice(const GameState &gs, int slot, int planetIdx) {
   if (price < 1) price = 1;
   if (snapshotEra(gs) == FACTION_PYKE) price = (price * ERA_SPICE_PAY_PCT + 50) / 100;  // 3.1-dev.88 WORLDS COST A FORTUNE
   const int o = gs.planetOwner[planetIdx];  // 3.1-dev.79 BUYOUT: a commander's world costs twice as much, never under BUYOUT_MIN_CR
-  if (o >= 0 && o != slot && planetHomeOf(planetIdx) < 0) price = max(BUYOUT_MIN_CR, price * BUYOUT_MULT);
+  if (o >= 0 && o != slot && liveHomeOf(gs, planetIdx) < 0) price = max(BUYOUT_MIN_CR, price * BUYOUT_MULT);
   return price;
 }
 
@@ -5192,7 +5198,7 @@ static int negDrawLocked(int d, int start, int count, int faction, const uint8_t
 const char *snapshotNegotiationRefusal(const GameState &gs, int slot, int planetIdx) {
   if (slot < 0 || slot >= MAX_PLAYERS || planetIdx < 0 || planetIdx >= NUM_PLANETS) return "No such planet.";
   if (gs.planetOwner[planetIdx] >= 0 && gs.planetOwner[planetIdx] != slot) return "A commander holds it -- you'll have to fight for it.";
-  if (planetHomeOf(planetIdx) >= 0) return "A home world -- only a fight takes it.";
+  if (liveHomeOf(gs, planetIdx) >= 0) return "A home world -- only a fight takes it.";
   if (gs.players[slot].negLosses[planetIdx] >= NEG_LOSSES_CLOSED) return "They won't negotiate with you here again.";
   return nullptr;  // v0.30.1: a hostile faction is a screen of its own (NEG_HOSTILE), not a refusal
 }
@@ -5622,7 +5628,7 @@ static void commitTakeoverLocked(int slot, int method, int fleetIdx) {
   int planetIdx = state.takeoverPlanet[slot];
   // v0.28.3 (playtest 2026-10-19: "you shouldn't be able to negotiate or pay for a
   // planet owned by another player. you have to face their defenses").
-  const bool held = state.planetOwner[planetIdx] >= 0 && state.planetOwner[planetIdx] != slot && planetHomeOf(planetIdx) < 0;  // 3.1-dev.79
+  const bool held = state.planetOwner[planetIdx] >= 0 && state.planetOwner[planetIdx] != slot && liveHomeOf(state, planetIdx) < 0;  // 3.1-dev.79
   state.negUprising[slot] = 0;
   if (method != TAKEOVER_FIGHT && state.players[slot].alertRound == state.round && state.players[slot].alertWorld == planetIdx) {  // 3.1-dev.101
     snprintf(state.takeoverResult[slot], sizeof(state.takeoverResult[slot]), "The talks failed. %s is on alert: only a fight now.", PLANETS[planetIdx].name); return;
@@ -5642,7 +5648,7 @@ static void commitTakeoverLocked(int slot, int method, int fleetIdx) {
   }
   // 3.1-dev.101 (user: "can you talk to home planets as consul or no? that ruined my game too"): a CONSUL may -- five hard
   // questions, no misses, one try per home world; won = theirs at once but shaky (UPRISING_DEFENDERS), like an uprising.
-  if (method == TAKEOVER_NEGOTIATE && planetHomeOf(planetIdx) >= 0 && classOfLocked(slot) == CLASS_CONSUL && state.planetOwner[planetIdx] != slot) {
+  if (method == TAKEOVER_NEGOTIATE && liveHomeOf(state, planetIdx) >= 0 && classOfLocked(slot) == CLASS_CONSUL && state.planetOwner[planetIdx] != slot) {
     if ((state.players[slot].upriseTried >> planetIdx) & 1) { snprintf(state.takeoverResult[slot], sizeof(state.takeoverResult[slot]), "You've tried to talk %s over already.", PLANETS[planetIdx].name); return; }
     state.players[slot].upriseTried |= 1u << planetIdx;
     state.negUprising[slot] = 2;
@@ -5652,7 +5658,7 @@ static void commitTakeoverLocked(int slot, int method, int fleetIdx) {
     snprintf(state.takeoverResult[slot], sizeof(state.takeoverResult[slot]), "A commander holds it -- you'll have to fight for it.");
     return;
   }
-  if ((method == TAKEOVER_PAY || method == TAKEOVER_NEGOTIATE) && planetHomeOf(planetIdx) >= 0 && !state.negUprising[slot]) {  // 2.0 home worlds
+  if ((method == TAKEOVER_PAY || method == TAKEOVER_NEGOTIATE) && liveHomeOf(state, planetIdx) >= 0 && !state.negUprising[slot]) {  // 2.0 home worlds
     snprintf(state.takeoverResult[slot], sizeof(state.takeoverResult[slot]), "A home world -- only a fight takes it.");
     return;
   }

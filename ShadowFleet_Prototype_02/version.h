@@ -6,7 +6,7 @@
 // exact string against Serial output on boot, the AMOLED home screen, and the
 // phone page footer to confirm all three actually agree on what's running.
 // ---------------------------------------------------------------------------
-#define FIRMWARE_VERSION "v1.0"
+#define FIRMWARE_VERSION "v1.0.1"
 #define FIRMWARE_DATE "2026-11-23"
 // v0.1.0 - Original single-player Shadow Fleet UI (star field, static screens)
 // v0.2.0 - Corrected BSP (pins/reset/enable/touch protocol) for 1.43 (non-C) board
@@ -3569,4 +3569,10 @@
 // v1.0 (2026-11-23) -- THE PUBLIC RELEASE (MakerWorld + github.com/anakin130013/ShadowFleetGame). Same game as v3.1-dev.126 (the
 //   user flashed dev.126 from the live web installer as a customer: "worked great"); only the version name changes. The 3.1-dev
 //   line ends here; later builds count on from v1.0.
+// v1.0.1 (2026-11-23) -- UNUSED HOME WORLDS ARE ORDINARY OUTER RIM WORLDS (user: "unused homeworld would be good to be like a
+//   normal outer rim world"; playtest: their special rules confused people). liveHomeOf(gs, p) = the home faction only while
+//   someone plays it; every rule check uses it (guard, VP, the Negotiate / Bribe refusal, buyout, uprising, the Consul's home
+//   talks, news, the forecast) and /state "home" sends it, so the phone shows such a world like any other. A home world nobody
+//   plays: the Outer Rim guard, 2 VP, talks and bribes allowed; its Sympathy stays its own faction. HOME_GUARD_NEUTRAL unused.
+//   Docs: the quick start + rulebook say to put a claim token AND fleet marker 1 on your home world.
 

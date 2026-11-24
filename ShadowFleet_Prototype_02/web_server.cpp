@@ -1515,7 +1515,7 @@ static const char PAGE_HTML[] PROGMEM = R"HTML(
 </div>
 
 <script>
-const PAGE_FW = 'v1.0';  // 3.1-dev.44: written by tools/page/make_page_gz.py from version.h -- the phone reloads when the table runs something else
+const PAGE_FW = 'v1.0.1';  // 3.1-dev.44: written by tools/page/make_page_gz.py from version.h -- the phone reloads when the table runs something else
 let myId = localStorage.getItem('sf_id');
 if (!myId) { myId = 'p' + Math.floor(Math.random()*1e9); localStorage.setItem('sf_id', myId); }
 let mySlot = -1;
@@ -8146,7 +8146,7 @@ static void sendStateJson() {
     if (p) j += ",";
     j += "{\"name\":" + jsonStr(PLANETS[p].name);
     j += ",\"owner\":" + String(s.planetOwner[p]);
-    j += ",\"ring\":" + String(PLANETS[p].ring) + ",\"vp\":" + String(planetVP(s, p, slot)) + ",\"home\":" + String(planetHomeOf(p));  // v0.30.1: worth this while held
+    j += ",\"ring\":" + String(PLANETS[p].ring) + ",\"vp\":" + String(planetVP(s, p, slot)) + ",\"home\":" + String(liveHomeOf(s, p));  // v0.30.1: worth this while held
     if (s.planetOwner[p] == slot && s.planetVpPending[p]) j += ",\"pending\":true";  // yours, held on a debt (3.1-dev.8: its VP counts already)
     // v0.21.11 (user): no garrison tier at all -- the only garrison number a
     // player ever gets is the exact count of their OWN planet ("defense").

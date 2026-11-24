@@ -1,6 +1,6 @@
 # Shadow Fleet Prototype 02 — Version Manifest
 
-**Firmware version:** v1.0 (2026-11-23)
+**Firmware version:** v1.0.1 (2026-11-23)
 
 This is the exact, internally-consistent file set for the current build. If
 your local folder doesn't match this list exactly, pull the fresh zip rather
@@ -9,9 +9,9 @@ than hunting through chat history for individual files.
 ## How to verify
 
 The version shows in three places, all should say `v3.1-dev.72`:
-1. **Serial Monitor** on boot: `Shadow Fleet Prototype 02  v1.0  (2026-11-23)`
-2. **AMOLED start/home screen**: subtitle reads `v1.0`
-3. **Phone page footer**: `Firmware v1.0`
+1. **Serial Monitor** on boot: `Shadow Fleet Prototype 02  v1.0.1  (2026-11-23)`
+2. **AMOLED start/home screen**: subtitle reads `v1.0.1`
+3. **Phone page footer**: `Firmware v1.0.1`
 
 ## Required files
 
@@ -820,6 +820,9 @@ portraits, transmission name tag) will be sized wrong.
 
 ### v1.0 (2026-11-23) -- the public release
 - Shadow Fleet goes public: MakerWorld listing, public repo and web installer. Same game as v3.1-dev.126, renamed v1.0.
+
+### v1.0.1 (2026-11-23) -- unused home worlds play like any Outer Rim world
+- A home world whose faction nobody is playing is an ordinary Outer Rim world: its normal guard, 2 VP, and you can negotiate for it or bribe it.
 
 ## What's still ahead (the rest of the agreed plan)
 
