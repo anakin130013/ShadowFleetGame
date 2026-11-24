@@ -1,6 +1,6 @@
 {
   "name": "Shadow Fleet table console",
-  "version": "v1.0.1",
+  "version": "v1.0.2",
   "new_install_prompt_erase": true,
   "builds": [
     {
