@@ -46,7 +46,7 @@ If you change the phone page (`PAGE_HTML` in `web_server.cpp`), run `python tool
 
 ## First game
 
-Read the one-page [quick start](docs/quickstart.md) aloud at the table.
+Read the one-page [quick start](docs/quickstart.md) aloud at the table. Want every rule before you build one? Read the [rulebook](docs/ShadowFleet_Rulebook.pdf).
 
 1. Power the table. It starts its own Wi-Fi network; join **ShadowFleet** (password `starwars1`) or connect the table to your home Wi-Fi from a phone.
 2. Scan the QR code on the table. Pick a seat, a faction and a commander.
